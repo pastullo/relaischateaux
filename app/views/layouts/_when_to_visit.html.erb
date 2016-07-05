@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-sm-12">
+		<h3><%= t 'visitable.heading' %></h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<p><%= visitable.general_overview %></p>
+	</div>
+	<div class="col-sm-6 legend text-right">
+		<span class="color green"><%= t 'visitable.excellent' %></span>
+		<span class="color light-green"><%= t 'visitable.good' %></span>
+		<span class="color yellow"><%= t 'visitable.fair' %></span>
+		<span class="color red"><%= t 'visitable.poor' %></span>
+	</div>
+</div>
+
+<hr>
+
+<div class="row">
+	<div class="col-sm-12 months-list">
+		<% Date::MONTHNAMES.drop(1).each do |m| %><div class="month <%= visitable.read_attribute("#{m.downcase}_color") %>">
+	<p class="month-name"><%= m[0,3] %></p>
+	<p data-toggle="tooltip" data-placement="top" title="<%= t 'visitable.temperature' %>"><%= visitable.read_attribute("#{m.downcase}_temperature") %>&deg; c</p>
+	<p><%= image_tag("icons/"+visitable.read_attribute("#{m.downcase}_icon_type")+".png") %></p>
+	<p data-toggle="tooltip" data-placement="top" title="<%= t 'visitable.rain' %>" class="hidden-xs"><%= visitable.read_attribute("#{m.downcase}_rain_mm") %> mm</p>
+</div><%= '<div class="clearfix visible-xs-block"></div>'.html_safe if (m == 'March' or m == 'June' or m == 'September') %><%= '<div class="clearfix hidden-xs hidden-lg"></div>'.html_safe if m == 'June' %><% end %>
+	</div>
+</div>
+
+<br>
+
+<script type="text/javascript">
+	$(function () {
+  $('p[data-toggle="tooltip"]').tooltip();
+});
+</script>

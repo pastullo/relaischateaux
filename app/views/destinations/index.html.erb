@@ -1,0 +1,141 @@
+<div class="listings">
+	<div class="header" style="background-image: url(<%= asset_path('listings/destinations.jpg') %>);">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 text-center">
+					<h1><%= I18n.t('destinations').capitalize %></h1>
+					<div class="sep"></div>
+					<p class="desc"><%= t 'listings.destinations' %></p>
+
+<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content">hey!</div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<div class="container" style="display: none;">
+		<div class="listing-filters row" style="margin: 0px;">
+			<div class="col-xs-6 col-sm-2" style="border-right: 1px solid #F4EFE6;">
+			<p class="text-center">
+				<a href="#" class="show-filters"><%= t('cta.filter') %> <i class="fa fa-angle-down text-muted"></i></a>
+
+			</p>
+			</div>
+			<div class="col-xs-6 col-sm-10 text-right">
+				<p class="available"><%= t 'destinations' %> <%= t 'filters.available' %>: <span><%= @count %></span></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="filters-list container">
+		<div class="row">
+			<div class="col-xs-8">
+				<br>
+				<p class="text-muted"><%= t 'filters.by_experiences' %></p>
+			</div>
+			<div class="col-sm-4 text-right">
+				<br>
+				<p><a href="#" class="clear-filter"><%= t 'filters.clear_filter' %></a></p></div>
+		</div>
+		<div class="row">
+			<% Experience.all.select(:id,:title).each do |e| %><a href="#" class="btn btn-info btn-filter" data-selected="false" data-experience-id="<%= e.id %>"><%= e.title %></a><% end %>
+		</div>
+	</div>
+
+
+</div>
+
+<script type="text/javascript">
+$(function() {
+	var list = new Array();
+
+	$('.btn-filter').click(function(e){
+		e.preventDefault();
+		$(this).toggleClass('btn-active');
+
+		list = []
+		$('.btn-filter.btn-active').each(function(){
+			list.push($(this).data('experience-id'));
+		});
+
+		
+		if(list.length > 0){
+			$('.experience-card').hide();
+			var selectors = new Array();
+			$.each(list, function( index, value ) {
+				selectors.push("[data-experience-ids*='\""+value+"\"']");
+				// OR
+				// $( "[data-experience-ids*='\""+value+"\"']" ).fadeIn();
+			});
+			$(selectors.join('')).fadeIn();
+			// console.log($(selectors.join('')));
+			
+			// shows the counter and update the count
+			if($(selectors.join('')).length > 0)
+				$('.zero-results').hide();
+			else
+				$('.zero-results').show();
+
+		}else {
+			$('.experience-card').show();
+		}
+		
+		// clear filter
+		$('.clear-filter').click(function(e){
+			e.preventDefault();
+			$('.btn-filter.btn-active').trigger('click');
+		});
+
+	});
+});
+</script>
+
+
+<div class="listings listings-spacer">
+	<div class="container">
+
+		<div class="row zero-results" style="display: none;">
+			<div class="col-sm-12 text-center"><p class="lead text-muted"><%= t 'filters.no_destination' %></p>
+			<br><br></div>
+		</div>
+
+		<div class="row">
+
+			<% @destinations.each do |destination| %>
+
+				<div class="col-sm-6 col-md-4 experience-card" data-experience-ids="<%= destination.experience_ids.map {|i| i.to_s} %>">
+					<div class="card">
+						<%= link_to destination_path(destination.slug) do  %>
+							<div class="thumb" style="background-image: url(<%= asset_path((destination.tile.present? ? destination.tile.url(:medium) : destination.hero.url(:medium) ) )%>);"></div>
+						<% end  %>
+						<div class="info">
+							<%= link_to destination_path(destination.slug) do  %>
+								<h3><%= destination.name %></h3>
+							<% end %>
+							<p class="list"><%= destination.property_names_list.join('<span>, </span>').html_safe %></p>
+						</div>
+					</div>
+				</div>
+
+			<% end %>
+
+			<% listing_filler(@filling_cards).each do |name,visibility_class| %>
+				<%= render partial: 'routes/listings/card', locals: {visibility_class: visibility_class, name: name, paragraph: true} %>
+			<% end %>
+
+		</div>
+	</div>
+</div>
+
+<%
+    meta_tags({
+      title: I18n.t('seo.title.destinations'),
+      description: I18n.t('seo.description.destinations'),
+      image: asset_path('backgrounds/wall.jpg'), 
+      url: destinations_url(trailing_slash: true)
+    }) 
+ %>

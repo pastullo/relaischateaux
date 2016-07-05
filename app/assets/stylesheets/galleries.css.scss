@@ -1,0 +1,75 @@
+// Place all the styles related to the Galleries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#galleryModal {
+
+	.modal-fullscreen {
+		width: 100%;
+		margin: 0 auto;
+		z-index: 1050;
+		.modal-content {
+			background: transparent;
+			border-radius: 0px;
+			box-shadow: none;
+			.modal-header {
+				text-align: right;
+			}
+			.close {
+				font-size: 3em;
+				opacity: 1;
+				color: #FFF;
+				float: none;
+				// position: absolute;
+				// top: 15px;
+				// right: 15px;
+				font-weight: normal;
+				// z-index: 1;
+				text-shadow: 0 0 2px rgba(255,255,255,0.3);
+			}
+		}
+		select.galleries {
+			width: auto;
+		}
+
+	}
+
+		div.slick-slide {
+			text-align: center;
+			img { 
+				margin: 0 auto;
+				max-height: 540px;
+			}
+
+		}
+
+		.slick-gallery-nav {
+			.slick-slide {
+				margin-top: 10px;
+				margin-right: 10px;
+			}
+		}
+
+		.slick-prev:before, .slick-next:before {
+			text-shadow: 0 0 2px rgba(0,0,0,0.7);
+		}
+	a.gallery {
+		display: block;
+		text-decoration: none !important;
+		&.active {
+			color: #535E64;
+		}
+	}
+}
+
+@media (min-height: 900px) {
+		div.slick-slide {
+			img { 
+				max-height: 800px !important;
+			}
+
+		}
+
+
+}

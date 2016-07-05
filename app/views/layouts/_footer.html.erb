@@ -1,0 +1,335 @@
+
+<footer>
+	<div class="inset-triangle">
+		<div class="a"></div>
+		<div class="b"></div>
+	</div>
+	<div class="top" style="padding: 50px 0px;" id="enquire">
+
+
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 text-center">
+						<h2><%= form_title() %></h2>
+						<br><br>
+					</div>
+				</div>
+				<div class="row">
+
+					<div class="col-sm-5 form-hook">
+						<%= render 'enquiries/form_sm' %>
+					</div>
+
+					<div class="col-sm-2 hidden-xs">
+						<div class="v-liner"></div>
+					</div>
+
+					<div class="col-sm-5">
+						<hr class="visible-xs-block">
+						<p class="lead"><b><%= I18n.t('footer.contact_us').upcase %></b></p>
+						<div class="liner"></div>
+						<p class="text-muted lead"><%= raw t 'footer.start' %></p>
+						<label><%= t 'footer.tel_label' %></label>
+						<p><%= t 'contacts.phone' %></p>
+
+						<label><%= t 'footer.email_label' %></label>
+						<p><a href="mailto:<%= t 'footer.email' %>" class="email"><%= t 'footer.email' %></a></p>
+						
+					</div>
+
+					
+				</div>
+			</div>
+		
+
+
+	</div>
+
+	<div class="bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-4 col-sm-3 text-center-xs">
+					<a href="http://www.relaischateaux.com/<%= I18n.locale %>" target="_blank">
+						<%= image_tag 'logo/relais-and-chateaux-squared.png', class: 'logo' %>
+					</a>
+				</div>
+				<div class="col-xs-8 col-sm-3">
+					<% Page.where(display_in_footer: true).limit(4).order(:sort_order).each do |p| %>
+						<%= link_to p.title, page_path(p), class: 'link' %>
+					<% end %>
+					<a href="http://blog.relaischateauxafrica.com" target="_blank" class="link" style="font-weight: normal;">Africa Live Blog</a>
+					<p style="font-weight: 500;"><%= t 'footer.copyright' %></p>
+				</div>
+				<div class="clearfix visible-xs-block"></div>
+				<div class="col-sm-3">
+					<hr class="visible-xs-block">
+					<div class="row">
+						<div class="col-xs-4 col-sm-12 text-center-xs">
+							<%= image_tag 'logo/icon.png', class: 'logo-icon' %>
+						</div>
+						<div class="col-xs-8 col-sm-12">
+							<p class="text-muted" style="margin-top: 8px;"><%= t 'footer.icon' %></p>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-3 hidden-xs">
+					<br>
+					<%= image_tag 'logo/trip-advisor.png', class: 'logo-trip' %>
+					<p class="text-muted" style="margin-top: 8px;"><%= t 'footer.tripadvisor' %></p>
+				</div>
+			</div>
+			
+			<div class="row hidden-xs">
+			
+				<div class="col-sm-12">
+					<hr>
+				</div>
+
+				<div class="col-sm-3">
+					<h4><%= t 'experiencess' %></h4>
+					<% Experience.where('footer_featured = ?',true).limit(4).each do |experience| %>
+						<%= link_to experience.title, experience_path(id: experience.slug), class: 'link' %>
+					<% end %>
+					<%= link_to I18n.t('footer.see_all'), experiences_path(:trailing_slash => true), class: 'link bold' %>
+				</div>
+				<div class="col-sm-3">
+					<h4><%= t 'routes' %></h4>
+					<% Route.where('footer_featured = ?',true).limit(4).each do |route| %>
+						<%= link_to route.name, route_path(id: route.slug), class: 'link' %>
+					<% end %>
+					<%= link_to I18n.t('footer.see_all'), routes_path(:trailing_slash => true), class: 'link bold' %>
+
+				</div>
+				<div class="col-sm-3">
+					<h4><%= t 'destinations' %></h4>
+					<% Destination.where('footer_featured = ?',true).limit(4).each do |destination| %>
+						<%= link_to destination.name, destination_path(id: destination.slug), class: 'link' %>
+					<% end %>
+					<%= link_to I18n.t('footer.see_all'), destinations_path(:trailing_slash => true), class: 'link bold' %>
+				</div>
+				<div class="col-sm-3">
+					<h4><%= t 'hotels' %></h4>
+					<% Property.where('footer_featured = ?',true).limit(4).each do |property| %>
+						<%= link_to property.name, property_path(id: property.slug), class: 'link' %>
+					<% end %>
+					<%= link_to I18n.t('footer.see_all'), properties_path(:trailing_slash => true), class: 'link bold' %>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="social">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-sm-12 text-center">
+					<a href="https://www.facebook.com/relaischateaux.africa" class="social" target="_blank"><i class="fa fa-facebook"></i></a>
+					<a href="https://plus.google.com/106954522254683029357" rel="publisher" class="social" target="_blank"><i class="fa fa-google-plus"></i></a>
+					<a href="https://twitter.com/RelaisChateauxA" class="social" target="_blank"><i class="fa fa-twitter"></i></a>
+					<a href="https://instagram.com/relaischateauxafrica/" class="social" target="_blank"><i class="fa fa-instagram"></i></a>
+					<a href="http://blog.relaischateauxafrica.com" class="social hidden-xs"><i class="fa fa-rss"></i></a>
+					<a href="http://www.pinterest.com/relaischateaux/" class="social hidden-xs" target="_blank"><i class="fa fa-pinterest"></i></a>
+					<a href="https://www.youtube.com/channel/UC8mjDgLqZm4sjvzTkiz7VtA" class="social" target="_blank"><i class="fa fa-youtube-play"></i></a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	  
+	</div>
+
+
+</footer>
+
+
+
+
+<script type="text/javascript">
+$(function() {
+
+	// Scroll to features
+	$('a.scroll-to').click(function(e){
+		e.preventDefault();
+	    $('html, body').animate({
+	    	scrollTop: $($(this).attr('href')).offset().top - $('nav').height()
+	    }, 1200);
+	});
+	$('a.scroll-to-top').click(function(e){
+		e.preventDefault();
+	    $('html, body').animate({ scrollTop: 0}, 1000);
+	});
+
+	addEventToBookNowBtn();
+
+	// On hover play for highlights
+	$('.play-on-hover').hover(
+		function(){
+			if( $('video.video-'+$(this).data('video-id')).length > 0)
+				$('video.video-'+$(this).data('video-id')).get(0).play();
+
+			$(this).css('opacity','1');
+		},
+		function(){
+			if( $('video.video-'+$(this).data('video-id')).length > 0)
+				$('video.video-'+$(this).data('video-id')).get(0).pause();
+			$(this).css('opacity','0');
+		}
+	);
+
+
+	// removes video element if on mobile
+    var isMobile = window.matchMedia("only screen and (max-width: 768px)");
+    if (isMobile.matches) {
+    	$('video').remove();
+		$('.recommended-routes-carousel').slick();	
+    }
+
+	$('.properties-container').slick({
+		slide: '.property',
+		dots: false
+	});
+
+
+	// if the device is touch enabled, we need to display the tiles
+	if ('ontouchstart' in window) {
+		$('.square-block .content').css('transition','').css('opacity',1);
+		$('.experience span').hide();
+	}
+
+
+	// Uupdates the I18l values based on the user IP address
+	$.getJSON(
+		'http://api.netimpact.com/qv1.php?key=38MZwutJVnUaC4kx&qt=geoip&d=json&q=<%= request.remote_ip %>', 
+		function(data){
+			country = data[0][6];
+			console.log("country is " + country);
+			if(countries[country]){
+				if(countries[country][0]){
+					$('.toll-free-number').html(countries[country][0]);
+					$('a.phone-xs').attr('href','tel:'+countries[country][0]);
+				}
+
+				$('#country').val(country).change();
+			}
+		}
+	);
+
+	// video playback controls
+	$('a.video-control').click(function(e){
+		e.preventDefault();
+		video = $('div.hero video.fullscreen-background').get(0);
+		if(video.paused){ 
+			$('div.popover').remove();
+			video.play();
+			$(this).find('i').removeClass('fa-play').addClass('fa-pause');
+			$('div.content.with-overlay').find('div.table').addClass('playing');
+		}else {
+
+			video.pause();
+			$(this).find('i').removeClass('fa-pause').addClass('fa-play');
+			$('div.content.with-overlay').find('div.table').removeClass('playing');
+		}
+	});
+
+	// display or hide the floating links scroll-top/share/enquire
+	$('body').waypoint(function(direction) {
+		$('.float-overlay')[direction == 'down' ? 'addClass' : 'removeClass']('active')
+	}, {offset: -600});
+
+	// EVENTS TRACKING FOR ENQUIRIES
+	$('nav a.connect').on('click', function() {
+  		ga('send', 'event', 'enquire', 'click', 'top-nav');
+	});
+
+	$('.float-overlay a.enquire').on('click', function() {
+  		ga('send', 'event', 'enquire', 'click', 'hover');
+	});
+
+	$('a.help').click(function(e){
+		e.preventDefault();
+		$('.how-to').slideToggle();
+	});
+	$('.how-to a.close-how-to').click(function(e){
+		e.preventDefault();
+		$('.how-to').slideUp();
+	});
+
+	<% if show_instructional_overlay? %>
+		showInstructionalOverlay();
+	<% end %>
+
+});
+
+function appendInstructionalPopover(number){
+	
+	$('div.popover').remove();
+
+	if(number == 1 ){
+		$('a.video-control').after('<div class="popover popover-enquire left" id="popover1" role="tooltip" style="position: fixed;"><div class="arrow"></div><div class="popover-content"><a href="#" class="dismiss"><i class="fa fa-close"></i></a><p class="head"><%= I18n.t("popovers.heading_1") %></p><%= I18n.t("popovers.text_1") %><a href="#" class="btn btn-primary btn-block btn-got-it"><%= I18n.t("popovers.btn_1") %></a></div></div>');
+
+		<% if is_homepage? %>
+			$('#popover1').addClass('homepage')
+		<% end %>
+
+		$('.popover-enquire').hide().fadeIn()
+			.css('top', $('a.video-control').offset().top + 10)
+			.css('left', ($('a.video-control').offset().left - $('.popover-enquire').width() - 10));
+		$('.popover-enquire .btn-got-it').click(function(e){
+			e.preventDefault();
+			appendInstructionalPopover(2);
+		});
+	}else{
+		$('body').append('<div class="popover popover-enquire bottom" id="popover2" role="tooltip"><div class="arrow"></div><div class="popover-content"><a href="#" class="dismiss"><i class="fa fa-close"></i></a><p class="head"><%= I18n.t("popovers.heading_2") %></p><%= I18n.t("popovers.text_2") %><a href="#" class="btn btn-primary btn-block btn-got-it"><%= I18n.t("popovers.btn_2") %></a></div></div>');
+
+		$('.popover-enquire').hide().fadeIn()
+			.css('top', $('a.connect').offset().top + 50)
+			.css('left', ($('a.connect').offset().left) - 170);
+
+		$('.popover-enquire .btn-got-it').click(function(e){
+			e.preventDefault();
+			$('div.popover').remove();
+		});
+	}
+
+	// close button
+	$('.popover-enquire a.dismiss').click(function(e){
+			e.preventDefault();
+			$('div.popover').remove();
+		});
+
+}
+
+
+</script>
+
+
+<div class="float-overlay">
+	<div class="tools">
+		<a href="#share" class="share">
+			<i class="fa fa-share-alt"></i>
+		</a><a href="#" class="scroll-to-top right-border">
+			<i class="fa fa-chevron-up"></i>
+		</a>
+		<div class="clearfix"></div>
+	</div>
+	<div class="share-tools">
+		<a href="https://twitter.com/intent/tweet?url=<%=u request.url %>" target="_blank">
+			<i class="fa fa-twitter"></i>
+		</a>
+		<a href="https://www.facebook.com/sharer/sharer.php?u=<%=u request.url %>" target="_blank">
+			<i class="fa fa-facebook"></i>
+		</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(function(){
+		$('a.share').click(function(e){
+			e.preventDefault();
+			$('.share-tools').toggleClass('active')
+		})
+	});
+</script>

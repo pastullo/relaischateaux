@@ -1,0 +1,145 @@
+<div class="listings">
+	<div class="header" style="background-image: url(<%= asset_path('listings/experiences.jpg') %>);">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 text-center">
+					<h1><%= I18n.t('experiencess').capitalize %></h1>
+					<div class="sep"></div>
+					<p class="desc"><%= t 'listings.experiences' %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+<%
+=begin %>
+
+
+	<div class="container" style="display: none;">
+		<div class="listing-filters row" style="margin: 0px;">
+			<div class="col-xs-6 col-sm-2" style="border-right: 1px solid #F4EFE6;">
+			<p class="text-center">
+				<a href="#" class="show-filters"><%= t('cta.filter') %> <i class="fa fa-angle-down text-muted"></i></a>
+
+			</p>
+			</div>
+			<div class="col-xs-6 col-sm-10 text-right">
+				<p class="available"><%= t 'routes' %> <%= t 'filters.available' %>: <span><%= @count %></span></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="filters-list container">
+		<div class="row">
+			<div class="col-xs-8">
+				<br>
+				<p class="text-muted"><%= t 'filters.by_destinations' %></p>
+			</div>
+			<div class="col-sm-4 text-right">
+				<br>
+				<p><a href="#" class="clear-filter"><%= t 'filters.clear_filter' %></a></p></div>
+		</div>
+		<div class="row">
+			<% Destination.all.select(:id,:name).each do |e| %><a href="#" class="btn btn-info btn-filter" data-experience-id="<%= e.id %>"><%= e.name %></a><% end %>
+		</div>
+	</div>
+
+
+</div>
+
+<script type="text/javascript">
+$(function() {
+	var list = new Array();
+
+	$('.btn-filter').click(function(e){
+		e.preventDefault();
+		$(this).toggleClass('btn-active');
+
+		list = []
+		$('.btn-filter.btn-active').each(function(){
+			list.push($(this).data('experience-id'));
+		});
+
+		
+		if(list.length > 0){
+			$('.experience-card').hide();
+			var selectors = new Array();
+			$.each(list, function( index, value ) {
+				selectors.push("[data-experience-ids*='\""+value+"\"']");
+			});
+			$(selectors.join('')).fadeIn();
+			// console.log($(selectors.join('')));
+			
+			// shows the counter and update the count
+			if($(selectors.join('')).length > 0)
+				$('.zero-results').hide();
+			else
+				$('.zero-results').show();
+
+		}else {
+			$('.experience-card').show();
+		}
+
+	});
+	// clear filter
+	$('.clear-filter').click(function(e){
+		e.preventDefault();
+		$('.btn-filter.btn-active').trigger('click');
+	});
+});
+</script>
+
+<%
+=end  %>
+
+<div class="listings listings-spacer">
+	<div class="container">
+
+		<div class="row zero-results" style="display: none;">
+			<div class="col-sm-12 text-center"><p class="lead text-muted"><%= t 'filters.no_experience' %></p>
+			<br><br></div>
+		</div>
+
+		<div class="row">
+			<% if @count == 0 %>
+				<div class="col-sm-12 text-center">
+					<p class="no-results"><em>No experience matches your search</em></p>
+				</div>
+			<% end %>
+			<% @experiences.each do |experience| %>
+
+				<div class="col-sm-6 col-md-4 experience-card" data-experience-ids="<%= experience.destination_ids.map {|i| i.to_s} %>">
+					<div class="card">
+						<%= link_to experience_path(id: experience.slug) do  %>
+							<div class="thumb" style="background-image: url(<%= asset_path( (experience.tile.present? ? experience.tile.url(:medium) : experience.hero.url(:medium) ) ) %>);"></div>
+						<% end  %>
+						<div class="info">
+							<%= link_to experience_path(id: experience.slug) do  %>
+								<h3><%= experience.title %></h3>
+							<% end %>
+						</div>
+					</div>
+				</div>
+
+			<% end %>
+
+
+
+			<% listing_filler(@filling_cards).each do |name,visibility_class| %>
+				<%= render partial: 'routes/listings/card', locals: {visibility_class: visibility_class, name: name, paragraph: false} %>
+			<% end %>
+			
+
+		</div>
+	</div>
+</div>
+
+<%
+    meta_tags({
+      title: I18n.t('seo.title.experiences'),
+      description: I18n.t('seo.description.experiences'),
+      image: asset_path('backgrounds/wall.jpg'), 
+      url: experiences_url
+    })
+%>

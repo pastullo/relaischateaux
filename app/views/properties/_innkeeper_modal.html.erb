@@ -1,0 +1,39 @@
+
+<div class="modal fade" id="innkeeperModal" tabindex="-1" role="dialog" aria-labelledby="highlightModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sick">
+    <div class="modal-content">
+      
+
+      <div class="modal-body row">
+        <div class="col-sm-<%= (@property.innkeeper_video.present? ? '8' : '6') %>">
+          <div class="modal-left responsive-video">
+            <% if @property.innkeeper_video.present? %>
+
+              <%= @property.innkeeper_video.html_safe %>
+
+            <% else %>
+              <%= image_tag @property.innkeeper_tile.url(:wide), class: 'img-responsive' %>
+            <% end %>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
+          </div>
+        </div>
+        <div class="col-sm-<%= (@property.innkeeper_video.present? ? '4' : '6') %>">
+          <div class="modal-right">
+            <a href="#" class="book-now"><%= t 'navbar.connect' %></a>
+            
+            <h2><%= t 'the_innkeeper' %></h2>
+            <p class="tiny"><%= @property.name %></p>
+            <%= @property.innkeeper_body.html_safe %>
+            
+            <div class="sep"></div>
+
+            <a href="#" class="back" data-dismiss="modal"><%= t 'close' %></a>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>

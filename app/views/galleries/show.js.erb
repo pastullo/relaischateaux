@@ -1,0 +1,55 @@
+$('#galleryModal').modal('hide');
+$('#galleryModal').remove();
+
+
+$('body').append("<%=j render 'galleries/gallery_modal', locals: {gallery: @gallery} %>");
+
+$('#galleryModal').modal('show');
+
+
+
+// $('#galleryModal').on('shown.bs.modal', function (e) {
+  
+	$('#galleryModal .slick-gallery').slick({
+
+	    
+	    // arrows: true,
+	    fade: true,
+	    accessibility: true,
+	    arrows: false,
+	    asNavFor: '.slick-gallery-nav'
+
+	});
+
+	$('#galleryModal .slick-gallery-nav').slick({
+	    slidesToShow: 8,
+	    asNavFor: '.slick-gallery',
+	    // centerMode: true,
+    	focusOnSelect: true,
+    	// dots: true,
+    	// arrows: true,
+    	accessibility: false,
+    	responsive: [
+		    {
+		      breakpoint: 1024,
+		      settings: {
+		        slidesToShow: 6,
+		      }
+		    },
+		    {
+		      breakpoint: 768,
+		      settings: {
+		        slidesToShow: 4,
+		      }
+		    },
+		    {
+		      breakpoint: 400,
+		      settings: {
+		        slidesToShow: 3,
+		      }
+		    }
+		  ]
+
+	});
+
+addEventToBookNowBtn();

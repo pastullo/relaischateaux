@@ -1,0 +1,16 @@
+	<p><b><%= review['title'] %></b></p>
+	<p>
+
+		<% review['rating'].to_i.times do |i| %>
+			<i class="fa fa-star text-success"></i>
+		<% end %>
+		
+
+		<% (5 - review['rating'].to_i).times do |i| %>
+			<i class="fa fa-star text-muted"></i>
+		<% end %>
+	</p>
+	<p class="text-muted"><%= t 'reviews_list.review_by' %> <%= review['author'] %></p>
+	<p><%= review['summary'] %></p>
+	<p><a href="<%= review['url'] %>" target="_blank"><%= t 'reviews_list.open' %></a></p>
+	<hr>

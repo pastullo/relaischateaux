@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require slick
+ *= require mapbox
+ *= require_tree .
+ *= require_self
+ */
+
+
+// SCAFFOLDING & COMPONENTS
+
+$color-gold: #8D7249;
+$color-dark-blue: #333D47;
+$color-relais-gold: #B7995D;
+
+$link-color: $color-gold;
+
+$font-family-sans-serif: "Proxima Nova", Helvetica, sans-serif;
+
+$headings-font-family: "Goudy Old Style", "Times New Roman", serif;
+$headings-color: #333D47;
+$border-radius-base: 2px;
+$border-radius-large: 4px;
+
+// MODALS
+$modal-backdrop-bg: #FBFBFB;
+$modal-backdrop-opacity: 0.85;
+
+// FORMS
+$input-bg: transparent;
+$input-border: #41484e;
+$input-border-radius: 0px;
+$input-border-focus: $color-dark-blue;
+$input-color-placeholder: #C5CBCF;
+$input-color: $color-dark-blue;
+$legend-color: $color-dark-blue;
+
+// BUTTONS
+$btn-primary-bg: $color-relais-gold;
+$btn-primary-border: $color-relais-gold;
+$btn-info-bg: $color-dark-blue;
+$btn-info-border: $color-dark-blue;
+
+$btn-default-color: #5d676f;
+// $btn-default-bg: #FFF;
+
+
+
+// NAVBARE
+$navbar-height: 70px;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+

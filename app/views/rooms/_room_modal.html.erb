@@ -1,0 +1,101 @@
+
+<div class="modal" id="roomModal" tabindex="-1" role="dialog" aria-labelledby="roomModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sick">
+    <div class="modal-content">
+
+      <div class="modal-body row">
+        <div class="col-sm-8">
+          <div class="modal-left">
+            <div class="slick-gallery">      
+              <% @room.room_pictures.each do |picture| %>
+                <div><%= image_tag(picture.image.url(:full), class: 'img-responsive') %></div>
+              <% end %>
+            </div>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="modal-right">
+
+            <a href="#" class="book-now"><%= t 'navbar.connect' %></a>
+            
+            <h2><%= @room.name %></h2>
+            <p class="tiny"><%= @room.room_category.name %></p>
+            
+            <% if @room.from_price.present? %>
+              <div class="dropdown">
+
+              <p class="price">+/- <span><%= room_price(@room) %></span> <%= price_type(@room) %> <%= " (#{I18n.t('sleeps')} #{@room.persons})" if @room.persons.present? %>
+              
+                <ul class="dropdown-menu convert-to" role="menu" aria-labelledby="convertMenu">
+                  <% CURRENCIES_LIST.each do |c| %>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-currency="<%= c %>"><%= c %></a></li>
+                  <% end %>
+                </ul>
+                <a href="#" class="convert dropdown-toggle" id="convertMenu" data-toggle="dropdown" 
+                  aria-expanded="true"
+                  data-currency="<%= @room.currency %>" 
+                  data-price="<%= @room.from_price %>">
+                  <%= t 'convert_prices' %>
+                    <span class="caret"></span>
+                </a>
+              </div>
+
+              </p>
+
+              <% if @room.room_category.property.price_conditions.present? %>
+                <p class="price"><%= @room.room_category.property.price_conditions %></p>
+              <% end %>
+
+            <% end %>
+
+            <p><%= @room.description.html_safe %></p>
+
+            <br>
+            <p class="tiny"><%= t 'features' %></p>
+            <div class="features-list row">
+              <% @room.room_features.each do |f| %>
+                <div class="feature col-lg-6"><%= image_tag(f.icon.url(:thumb_small)) %> <%= f.name %></div>
+              <% end %>
+            </div>
+
+
+            <div class="sep"></div>
+
+            <a href="#" class="back" data-dismiss="modal"><%= t 'close' %></a>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function() {
+    $('ul.convert-to > li > a').click(function(e){
+      e.preventDefault();
+
+      var convert = $('a.convert');
+      var new_currency = $(this).data('currency');
+
+        $.ajax({
+          dataType: "jsonp",
+          url: "http://rate-exchange.appspot.com/currency?from="+convert.data('currency')+"&to="+$(this).data('currency'),
+          success: function(data){
+            console.log(convert.data('currency'));
+            console.log(convert.data('price'));
+            price = (data.rate * convert.data('price')).toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            console.log(price);
+            $('p.price > span').html(new_currency + " " + price);
+
+            }
+        });
+      // });
+
+    });
+  });
+</script>
+
+

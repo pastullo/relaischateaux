@@ -1,0 +1,22 @@
+	<div class="col-sm-4">
+		<div class="box">
+			<%= link_to route_path(route) do %>
+			<div class="image" style="background-image: url(<%= asset_path( (route.tile.present? ? route.tile.url(:medium) : route.hero.url(:medium) ) ) %>);">
+<%
+=begin  %>
+				<p class="left"><span><%= route.destinations.sum(:days) %></span> <%= t 'nights' %></p>
+				<p class="right"><span><%= route.destinations.count %></span> <%= t 'destinations' %></p>
+<%
+=end  %>
+				
+			</div>
+			<% end %>
+			<div class="info">
+				<%= link_to route_path(route.slug) do %>
+					<h3><%= route.name %></h3>
+				<% end %>
+				<p class="desc"><%= route.short_description.to_s.html_safe %></p>
+			</div>
+			
+		</div>
+	</div>

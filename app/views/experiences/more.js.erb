@@ -1,0 +1,7 @@
+
+$('#learnMoreModal').remove();
+$('body').append("<%=j render 'more_modal', locals: {experience: @experience} %>");
+
+$('#learnMoreModal').modal('show');
+
+addEventToBookNowBtn();

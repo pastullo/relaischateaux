@@ -1,0 +1,42 @@
+
+<div class="modal fade" id="highlightModal<%= highlight.id %>" tabindex="-1" role="dialog" aria-labelledby="highlightModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sick">
+    <div class="modal-content">
+
+      <div class="modal-body row">
+        <div class="col-sm-8">
+          <div class="modal-left">
+            <% if highlight.video_embed.present? %>
+              <%= highlight.video_embed.html_safe %>
+            <% elsif highlight.hero.present? %>
+              <%= image_tag highlight.hero.url(:full), class: 'img-responsive' %>
+            <% elsif highlight.video_tile_mp4.present? and highlight.video_tile_ogg.present? %>
+              <video autoplay loop muted>
+                <source src="<%= highlight.video_tile_mp4.url %>" type="video/mp4">
+                <source src="<%= highlight.video_tile_ogg.url %>" type="video/ogg">
+              </video> 
+            <% elsif highlight.tile.present? %>
+              <%= image_tag highlight.tile.url(:wide), class: 'img-responsive' %>
+            <% end %>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="modal-right">
+            <a href="#" class="book-now"><%= t 'navbar.connect' %></a>
+            
+            <h2><%= highlight.title %></h2>
+            <p class="tiny"><%= highlight.highlightable.name %></p>
+            <%= highlight.body.html_safe %>
+            
+            <div class="sep"></div>
+
+            <a href="#" class="back" data-dismiss="modal"><%= t 'close' %></a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

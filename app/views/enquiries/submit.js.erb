@@ -1,0 +1,20 @@
+<% if @enquire.valid? %>
+
+	$('.form-hook').html("<%= escape_javascript(render 'enquiries/form_lg') %>");
+
+
+	ga('send', 'event', 'enquire', 'click', 'complete-enquiry');
+	
+<% else %>
+	$('#new_enquire').remove();
+	$('.form-hook').html("<%= escape_javascript(render 'enquiries/form_sm') %>");
+
+	// reselect the submitted country, making sure to trigger the change event to fill hidden fields
+	<% if params[:enquire].present? and params[:enquire][:country].present? %>
+		$('#country').val('<%= params[:enquire][:country] %>').change();
+	<% end %>
+
+<% end %>
+
+// attach event for the children selection
+addEventToChildrenSelect();

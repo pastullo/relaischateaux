@@ -1,0 +1,80 @@
+<!-- properties Modal -->
+<div class="modal fade" id="propertiesModal" tabindex="-1" role="dialog" aria-labelledby="propertiesModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sick">
+    <div class="modal-content modal-highlight">
+
+      <div class="modal-body row">
+      	<div class="col-sm-8">
+      		<div class="modal-left">
+				
+
+						<div class="hero hero-bubbles">
+						
+						<%
+						properties_counter = @destination.properties.limit(3).count
+						width = number_with_precision(
+							(properties_counter > 0 ? (100.to_f/(properties_counter)) : 100 ), precision: 2)
+						counter = 0
+						 %>
+							
+							<% @destination.properties.limit(3).each do |property| %>
+
+						 	<%= link_to property_path(property) do %>
+							<div class="bubble" style="background-image: url(<%= asset_path( (property.hero_override.present? ? property.hero_override.url(:full) : property.hero.url(:full) ) ) %> ); left: <%= width.to_f * counter %>%; width: <%= width %>%">
+								<div class="content">
+									<div class="table">
+										<div class="table-cell">
+											<span><%= t 'cta.explore' %></span>
+											<p><%= property.name %></p>
+										</div>
+									</div>
+								</div>
+							</div>
+							<% end %>
+
+<%
+=begin  %>
+								<div class="hero expandable" style="background-image: url(<%= asset_path( (property.hero_override.present? ? property.hero_override.url(:full) : property.hero.url(:full) ) ) %> ); left: <%= width.to_f * counter %>%; width: <%= width %>%">
+									<div class="hero-bg">
+										<div class="info-box row">
+											<div class="<%= (properties_counter >= 3 ? 'col-xs-12' : (properties_counter == 1 ? 'col-sm-5' : 'col-sm-8 col-sm-offset-2') ) %>">
+												<div class="property-box">
+
+													<h3><%= property.name %></h3>
+													<p class="desc" style="margin: 0; color: #333;"><%= property.short_description %></p>
+													
+													<%= link_to I18n.t('cta.discover_more').upcase, property_path(property), class: 'more' %>
+
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+<%
+=end  %>
+								<% counter += 1 %>
+							<% end %>
+						</div>
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
+
+			  </div>
+      		</div>
+      		<div class="col-sm-4">
+      			<div class="modal-right">
+
+      				<h3><%= I18n.t('hotels_in', name: @destination.name) %></h3>
+      				<br><br>
+      				<p><%= @destination.properties_text %></p>
+
+		            <div class="sep"></div>
+
+		            <a href="#" class="back" data-dismiss="modal"><%= t 'close' %></a>
+
+      			</div>
+      		</div>
+
+
+      </div>
+    </div>
+  </div>
+</div>

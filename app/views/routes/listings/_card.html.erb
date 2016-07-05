@@ -1,0 +1,16 @@
+<div class="col-sm-6 col-md-4 experience-card hidden-xs <%= visibility_class %>">
+	<div class="card">
+
+		<a href="#" data-toggle="modal" data-target="#cardModal<%= name %>">
+			<div class="thumb" style="background-image:url(<%= asset_path('backgrounds/card.png') %> );"></div>
+		</a>
+		<div class="info">
+			<a href="#" data-toggle="modal" data-target="#cardModal<%= name %>">
+				<h3><%= t "cards.#{name}" %></h3>
+			</a>
+			<% if paragraph %>
+				<p class="list"><%= t "cards.#{name}_text" %></p>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,127 @@
+<div class="listings">
+	<div class="header" style="background-image: url(<%= asset_path('listings/properties.jpg') %>);">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-sm-offset-2 text-center">
+					<h1 style="text-transform: capitalize;"><%= I18n.t('hotels') %></h1>
+					<div class="sep"></div>
+					<p class="desc"><%= t 'listings.properties' %></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<div class="container" style="display: none;">
+		<div class="listing-filters row" style="margin: 0px;">
+			<div class="col-xs-6 col-sm-2" style="border-right: 1px solid #F4EFE6;">
+			<p class="text-center">
+				<a href="#" class="show-filters"><%= t('cta.filter') %> <i class="fa fa-angle-down text-muted"></i></a>
+
+			</p>
+			</div>
+			<div class="col-xs-6 col-sm-10 text-right">
+				<p class="available"><%= t 'properties' %> <%= t 'filters.available' %>: <span><%= @count %></span></p>
+			</div>
+		</div>
+	</div>
+
+	<div class="filters-list container">
+		<div class="row">
+			<div class="col-xs-8">
+				<br>
+				<p class="text-muted"><%= t 'filters.by_destination' %></p>
+			</div>
+			<div class="col-sm-4 text-right">
+				<br>
+				<p><a href="#" class="clear-filter"><%= t 'filters.clear_filter' %></a></p></div>
+		</div>
+		<div class="row">
+			<% Destination.all.select(:id,:name).each do |e| %><a href="#" class="btn btn-info btn-filter" data-selected="false" data-destination-id="<%= e.id %>"><%= e.name %></a><% end %>
+		</div>
+	</div>
+
+
+</div>
+
+<script type="text/javascript">
+$(function() {
+
+
+	$('.btn-filter').click(function(e){
+		e.preventDefault();
+		$('.btn-filter').removeClass('btn-active');
+		$(this).addClass('btn-active');
+
+
+		var selector = $(".experience-card[data-destination-id=" + $(this).data('destination-id') +"]");
+		console.log(selector);
+		$('.experience-card').hide();
+		selector.fadeIn();
+
+		if(selector.length > 0)
+			$('.zero-results').hide();
+		else
+			$('.zero-results').show();
+
+	});
+
+	$('.clear-filter').click(function(e){
+		e.preventDefault();
+		$('.btn-filter').removeClass('btn-active');
+		$('.experience-card').fadeIn();
+	});
+});
+</script>
+
+
+<div class="listings listings-spacer">
+	<div class="container">
+
+		<div class="row zero-results" style="display: none;">
+			<div class="col-sm-12 text-center"><p class="lead text-muted"><%= t 'filters.no_property' %></p>
+			<br><br></div>
+		</div>
+
+		<div class="row">
+			<% if @count == 0 %>
+				<div class="col-sm-12 text-center">
+					<p class="no-results"><em>No experience matches your search</em></p>
+				</div>
+			<% end %>
+			<% @properties.each do |property| %>
+
+				<div class="col-sm-6 col-md-4 experience-card" data-destination-id="<%= property.destination_id %>">
+					<div class="card">
+						<%= link_to property_path(property.slug) do  %>
+							<div class="thumb" style="background-image: url(<%= asset_path((property.tile.present? ? property.tile.url(:medium) : property.hero.url(:medium) ) ) %>);"></div>
+						<% end  %>
+						<div class="info">
+							<%= link_to property_path(property.slug) do  %>
+								<h3><%= property.name %></h3>
+							<% end %>
+							<p class="list"><%= property.destination.name %></p>
+						</div>
+					</div>
+				</div>
+
+			<% end %>
+
+			<% listing_filler(@filling_cards).each do |name,visibility_class| %>
+				<%= render partial: 'routes/listings/card', locals: {visibility_class: visibility_class, name: name, paragraph: true} %>
+			<% end %>
+
+		</div>
+	</div>
+</div>
+
+<%     
+meta_tags({
+      title: I18n.t('seo.title.properties'),
+      description: I18n.t('seo.description.properties'),
+      image: asset_path('backgrounds/wall.jpg'), 
+      url: properties_url(trailing_slash: true)
+    })
+  %>

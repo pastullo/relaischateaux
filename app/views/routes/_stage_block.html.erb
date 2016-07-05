@@ -1,0 +1,118 @@
+
+	
+	<div class="hero hero-fixed autoheight-xs" id="stage-<%= counter %>" style="background-image: url(<%= (stage.destination_hero.present? ? stage.destination_hero.url(:full) : stage.destination.hero.url(:full) ) %> );">
+		
+		<div class="hero-bg">
+
+					<div class="info-box row">
+						<div class="col-sm-6 col-md-4 col-md-offset-1">
+
+							<div class="stage-box">
+
+								<h2><%= stage.destination.name %></h2>
+								<p class="location"><%= stage.destination.location %></p>
+
+								<p><%= (stage.short_description.present? ? stage.short_description.html_safe : stage.destination.short_description ) %></p>
+								<div class="sep"></div>
+
+								<%= link_to I18n.t('cta.learn_more'), show_about_destination_path(stage.destination.id),remote: true, class: 'more' %>
+
+								<br>
+								<div class="steps">
+									<% 1.upto(count).each do |i| %>
+										<div class="step">
+											<a class="scroll-to <%= (i > counter ? 'next' : '') %>" href="#stage-<%= i %>"><%= i %></a>
+											<% if i == counter %>
+												<div class="border"></div>	
+											<% end %>
+										</div>
+									<% end  %>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+		</div>
+
+
+	</div>
+
+
+	
+	<% 
+
+		property_width = number_with_precision((property_total > 0 ? (100.to_f/(property_total)) : 100 ),precision: 2)
+	%>
+
+
+	<div class="route-sep with-arrow">
+		<p><%= t 'our_properties_in', our_properties: (property_total > 1 ? I18n.t('our_properties') : I18n.t('our_property')), destination: stage.destination.name  %></p>
+	</div>
+
+
+
+	<div class="expandables-container route-properties hidden-xs hidden-sm">
+
+		<% counter = 0  %>
+		<% stage.destination.properties.each do |property| %>
+
+		<% override = stage.property_overrides.where(property_id: property.id).first %>
+			<div class="hero expandable" style="background-image: url(<%= asset_path( ( override.present? ? override.property_hero.url(:full) : property.hero.url(:full) ) ) %> ); width: <%= property_width %>%; left: <%= property_width.to_f * counter %>%;">
+				<div class="hero-bg">
+					<div class="info-box row">
+						<div class="<%= (property_total >= 3 ? 'col-xs-12' : (property_total == 1 ? 'col-sm-4 col-sm-offset-1' : 'col-sm-8 col-sm-offset-2') ) %>">
+							<div class="property-box">
+								<h3><%= property.name %></h3>
+								<p class="desc"><%= property.short_description.to_s.html_safe %></p>
+								<% unless property.galleries.any? %>
+									<%= link_to I18n.t('cta.discover_more').upcase, show_about_property_path(property.id),remote: true, class: 'more' %>
+								<% else %>
+									<%= link_to I18n.t('cta.discover_more').upcase, gallery_path(property.galleries.first), remote: true, class: 'more' %>
+								<% end %>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<% counter += 1 %>
+		<% end %>
+
+		<div class="clearfix"></div>
+	</div>
+
+
+	<div class="properties-container visible-xs-block visible-sm-block">
+
+		<% counter = 0  %>
+		<% stage.destination.properties.each do |property| %>
+
+			<div class="hero property" style="background-image: url(<%= property.hero.url(:full) %> );">
+				<div class="hero-bg">
+					<div class="info-box row">
+						<div class="col-xs-12">
+							<div class="property-box">
+								<h3><%= property.name %></h3>
+								<p class="desc"><%= property.short_description.to_s.html_safe %></p>
+								<%= link_to I18n.t('cta.discover_more').upcase, property_path(property.id), class: 'more' %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<% counter += 1 %>
+		<% end %>
+
+
+	</div>
+
+	<div class="route-sep double">
+		<p><%= image_tag 'logo/tiny.png' %></p>
+	</div>
+
+
+
+
+
+

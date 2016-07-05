@@ -1,0 +1,14 @@
+<% if @enquire.valid? %>
+
+	$('.form-hook').html("<%= escape_javascript(render 'enquiries/thankyou') %>");
+	ga('send', 'event', 'enquire', 'click', 'submit');
+
+<% else %>
+	$('.form-hook').html("<%= escape_javascript(render 'enquiries/form_lg') %>");
+<% end %>
+
+
+dataLayer.push({
+	'enquiryNumber': '<%= "REL-#{@enquire.locale.upcase}-#{@enquire.sequential_id}" %>',
+	'event':'formSubmitted'
+});

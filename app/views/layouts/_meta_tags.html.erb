@@ -1,0 +1,8 @@
+	<meta name="description" content="<%= @meta_tags[:description] %>">
+	
+	<meta property="og:title" content="<%= @meta_tags[:title] %>" />
+	<meta property="og:description" content="<%= @meta_tags[:description] %>" />
+	<meta property="og:image" content="<%= @meta_tags[:image] %>" />
+	<% if @meta_tags[:url].present? %>
+	<meta property="og:url" content="<%= @meta_tags[:url] %>" />
+	<% end %>

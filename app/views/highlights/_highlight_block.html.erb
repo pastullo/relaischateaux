@@ -1,0 +1,23 @@
+<div class="square-block <%= (highlight.block_size == 2 ? 'two-of-three' : 'one-of-three') %>" style="background-image: url(<%= highlight.tile.url( (highlight.block_size == 2 ? :large_wide : :large) ) %>);">
+
+	<% if highlight.video_tile_mp4.present? or highlight.video_tile_ogg.present? %>
+		<video class="fullscreen-background video-<%= highlight.id %>" muted preload="metadata" loop>
+		<% if highlight.video_tile_mp4.present? %>
+			<source src="<%= highlight.video_tile_mp4.url %>" type="video/mp4">
+		<% end %>
+		<% if highlight.video_tile_ogg.present? %>
+			<source src="<%= highlight.video_tile_ogg.url %>" type="video/ogg">
+		<% end %>
+		</video> 
+	<% end %>
+
+	<a href="#" data-toggle="modal" data-target="#highlightModal<%= highlight.id %>">
+		<div class="content play-on-hover" data-video-id="<%= highlight.id %>">
+			<div class="table">
+				<div class="table-cell">
+					<h3><%= highlight.title %></h3>
+				</div>
+			</div>
+		</div>
+	</a>
+</div>

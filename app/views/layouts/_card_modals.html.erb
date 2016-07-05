@@ -1,0 +1,42 @@
+
+<div class="modal fade" id="cardModalpricing" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-card">
+    <div class="modal-content">
+
+      <div class="modal-body">
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+          <h2><%= t 'card_modals.rate_title' %></h2>
+
+          <%= raw t 'card_modals.rate_text' %>
+          
+          <a href="#" class="back" data-dismiss="modal"><%= I18n.t('close').upcase %></a>
+          
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="cardModalroutes" tabindex="-1" role="dialog" aria-labelledby="cardModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-card">
+    <div class="modal-content">
+
+      <div class="modal-body">
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        
+        <h2><%= t 'card_modals.routes_title' %></h2>
+
+        <%= raw t 'card_modals.routes_text' %>
+        
+        <a href="#" class="back" data-dismiss="modal"><%= I18n.t('close').upcase %></a>
+
+      </div>
+
+    </div>
+  </div>
+</div>

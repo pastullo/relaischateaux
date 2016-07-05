@@ -1,0 +1,271 @@
+<div class="hero hero-position-fixed hero-xs" style="background-image: url(<%= @property.hero.url(:full) %>);">
+	<div class="content with-overlay">
+
+	<%= render partial: 'layouts/fullscreen_video', locals: {resource: @property} %>
+
+
+		<div class="table">
+
+			<div class="table-cell">
+
+				<h1><%= @property.name %></h1>
+				<p class="little white" style="display: block;"><%= @property.location %></p>
+
+
+
+				<% if @property.video_mp4.present? or @property.video_ogg.present? %>
+					<a href="#" class="video-control">
+						<i class="fa fa-play"></i>
+					</a>
+				<% end %>
+
+				<a href="#property-info" class="arrow-down scroll-to bounce animated">
+					<span><%= t 'scroll_down' %></span>
+					<i class="fa fa-angle-down"></i>
+				</a>
+
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div class="hero hero-empty"></div>
+
+
+<div class="pos-relative white-bg">
+
+	<div class="property-info" id="property-info">
+		<div class="square-block square-block-double" style="background-image: url(<%= @property.innkeeper_tile.url(:wide) %>);">
+			<%= link_to show_innkeeper_property_path(@property), remote: true do %>
+			<div class="content">
+				<div class="table">
+					<div class="table-cell">
+						<h2><%= t 'meet_innkeeper' %></h2>
+					</div>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<div class="square-block square-block-double" style="background-image: url(<%= @property.about_tile.url(:wide) %>);">
+
+			<% if @property.galleries.present? %>			
+				<%= link_to gallery_path(@property.galleries.first), remote: true do %>
+					<div class="content">
+						<div class="table">
+							<div class="table-cell">
+								<h2><%= t 'about' %></h2>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			<% else %>
+				<a href="#" data-toggle="modal" data-target="#aboutModal">
+					<div class="content">
+						<div class="table">
+							<div class="table-cell">
+								<h2><%= t 'about' %></h2>
+							</div>
+						</div>
+					</div>
+				</a>
+			<% end %>
+
+		</div>
+	</div>
+	<div class="clearfix"></div>
+
+
+
+	<div class="property-info-bottom">
+
+		<ul class="menu">		
+			
+			<!-- HIGHLIGHTS SECTION -->
+			<% if @property.has_highlights? %>
+				<li><a href="#" data-content-target="highlights"><%= t 'highlights' %></a></li>
+				<% content_for :property_highlights do %>
+					<div class="menu-content grey" data-content-name="highlights">
+						<div class="container highlights-container">
+					    	<% @property.highlights.each do |highlight| %>
+					    		<%= render partial: 'highlights/highlight_block', locals: {highlight: highlight} %>
+								<% content_for :highlights_modals_list do %>
+									<%= render partial: 'highlights/highlight_modal', locals: {highlight: highlight} %>
+								<% end %>
+					    	<% end %>
+				    	</div>
+				    	<div class="clearfix"></div>
+					</div>
+				<% end %>
+			<% end %>
+
+
+
+			<!-- ROOMS SECTION -->
+			<% if @property.has_rooms? %>
+				
+				<li><a href="#" data-content-target="rooms"><%= t 'accomodations' %></a></li>
+				
+				<% content_for :property_rooms do %>
+					<div class="menu-content" data-content-name="rooms">
+						<ul class="nav-rooms" role="tablist">
+							<% @property.room_categories.order('sort_order').each do |category| %>
+								<li role="presentation"><a href="#" data-category-id="<%= category.id %>"><%= category.name %></a></li>
+							<% end %>
+						</ul>
+
+						<div class="rooms-list">
+							<% @property.room_categories.select(:id).order('sort_order').each do |category| %>
+								<div class="room-category container feature-boxes" data-category-id="<%= category.id %>">
+									<div class="row">
+
+										<% category.rooms.each do |room| %>
+											<%= render partial: 'rooms/room_block', locals: {room: room} %>
+										<% end  %>
+
+										<% room_count = category.rooms.size %>
+										<% if( 3 - (room_count % 3) == 1) %>
+											<%= render partial: 'rooms/filler/room_card_pricing' %>
+										<% elsif( 3 - (room_count % 3) == 2)  %>
+											<%= render partial: 'rooms/filler/room_card_pricing' %>
+											<%= render partial: 'rooms/filler/room_card_route' %>
+										<% end %>
+										
+									</div>
+								</div>
+							<% end %>
+						</div>
+					</div>
+				<% end %>
+			<% end %>	  
+			
+
+
+			<!-- REVIEWS SECTION -->
+			<% if @property.has_reviews? %>
+			<%# if false %>
+				<li><a href="#" data-content-target="reviews"><%= t 'reviews' %></a></li>
+				<% content_for :property_reviews do %>
+					<div class="menu-content grey" data-content-name="reviews">
+						<div class="container container-reviews">
+
+							<p class="lead"><%= t 'reviews_by_trip_advisor' %> <%= image_tag 'logo/trip-advisor-colors.png', class: 'tripadvisor' %></p>
+							<div class="reviews-list"></div>
+
+							<% reviews = JSON.parse(@property.reviews_json) %>
+
+							<% reviews.each do |review| %>
+
+								<%= render partial: 'properties/reviews/review', locals: {review: review} %>
+							<% end %>
+
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+
+		</ul>
+
+
+		<%= yield :property_highlights %>
+
+		<%= yield :property_rooms %>
+
+		<%= yield :property_reviews %>
+		
+
+
+	</div>
+
+
+
+
+
+
+
+	<div class="feature-boxes boxes-holder">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<%= image_tag 'logo/tiny.png', class: 'tiny' %>
+					<h2><%= t 'routes_featuring' %> <%= @property.name %></h2>
+				</div>
+			</div>
+			<div class="row recommended-routes-carousel">
+				<%= render partial: 'routes/recommended_routes', locals: {collection: @property.routes, size: @property.routes.size } %>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+	$(function() {
+		
+		// handles Property and Destination main menu navigation
+		$('ul.menu a').click(function(e){
+			e.preventDefault();
+			$(this).parent().addClass('active').siblings().removeClass('active');
+			// alert($(this).data('content-target'));
+			$('div.menu-content').hide();
+			$('div.menu-content[data-content-name='+$(this).data('content-target')+']').show();
+		});
+		$('ul.menu a').first().trigger('click');
+
+
+		// Handles rooms-categories navigation
+		$('ul.nav-rooms a').click(function(e){
+			e.preventDefault();
+			$(this).parent().addClass('active').siblings().removeClass('active');
+
+			$('div.room-category').hide();
+			$('.room-category[data-category-id='+$(this).data('category-id')+']').show();
+		});
+		$('ul.nav-rooms a').first().trigger('click');
+
+		// swap maps and footer
+		// $('footer > .top').insertAfter($('.property-info-bottom'));
+
+	});
+</script>
+
+
+
+<!-- About Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sick">
+    <div class="modal-content">
+      
+
+      <div class="modal-body row">
+        <div class="col-sm-6">
+          <div class="modal-left">
+            <% if @property.about_tile.present? %>
+              <%= image_tag @property.about_tile.url(:wide), class: 'img-responsive' %>
+            <% end %>   
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="modal-right">
+            
+            <h2>About</h2>
+            <p class="tiny"><%= @property.name %></p>
+            <%= @property.about_body.html_safe %>
+            
+            <div class="sep"></div>
+
+            <a href="#" class="back" data-dismiss="modal"><%= t 'close' %></a>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<%= yield :highlights_modals_list %>

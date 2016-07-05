@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default navbar-fixed-top navbar-headroom" role="navigation" id="top">
+
+
+  <div class="container">
+      
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+
+      <a href="tel:<%= t 'contacts.phone' %>" class="navbar-toggle phone phone-xs collapsed">
+        <i class="fa fa-phone"></i>
+      </a>
+
+   
+      <div class="navbar-header">
+        <%= link_to root_path, class: 'navbar-brand' do  %>
+          <%= image_tag 'logo/relais-and-chateaux-icon.png', class: 'logo visible-sm-inline' %> 
+          <%= image_tag 'logo/relais-and-chateaux.png', class: 'logo hidden-sm' %>
+        <% end %>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-collapse">
+        
+        <ul class="nav navbar-nav navbar-menu">
+          <%= render 'layouts/nav_links' %>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right navbar-bordered hidden-xs">
+
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= I18n.locale %> <i class="fa fa-angle-down"></i></a>
+            <ul class="dropdown-menu" role="menu">
+              <li role="presentation" class="dropdown-header"><%= t 'navbar.choose_language' %></li>
+              <li><%= link_to 'English', controller: controller_name, action: action_name, locale: nil %></li>
+              <li><%= link_to 'French', controller: controller_name, action: action_name, locale: :fr %></li>
+            </ul>
+          </li>
+          
+          <li><div class="sep visible-lg-block"></div></li>
+          
+          <li class="visible-lg-block"><a class="has-sep"><i class="fa fa-phone"></i> <span class="toll-free-number"><%= t 'contacts.phone' %></span></a></li>
+
+          <li><a href="#enquire" class="connect has-sep scroll-to connect-popup"><%= t 'navbar.connect' %></a></li>
+
+        </ul>
+      </div>
+    </div>
+
+
+  </div>
+
+</nav>
+

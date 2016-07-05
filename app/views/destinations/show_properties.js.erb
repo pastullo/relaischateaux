@@ -1,0 +1,7 @@
+
+$('#propertiesModal').remove();
+$('body').append("<%=j render 'destinations/properties_modal' %>");
+
+$('#propertiesModal').modal('show');
+
+addEventToBookNowBtn();

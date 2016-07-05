@@ -1,0 +1,31 @@
+
+<div class="modal fade" id="aboutDestinationModal" tabindex="-1" role="dialog" aria-labelledby="highlightModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sick">
+    <div class="modal-content">
+      
+      <div class="modal-body row">
+        <div class="col-sm-8">
+          <div class="modal-left">
+            <%= image_tag @destination.hero.url(:full), class: 'img-responsive' %>
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="modal-right">
+            <a href="#" class="book-now"><%= t 'navbar.connect' %></a>
+            
+            <h2><%= @destination.name %></h2>
+
+            <%= @destination.about_body.html_safe %>
+            <br><br>
+            <%= link_to I18n.t('learn_more_about',name: @destination.name), destination_path(@destination), class: 'view' %>
+            <div class="sep"></div>
+
+            <a href="#" class="back" data-dismiss="modal"><%= t 'close' %></a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

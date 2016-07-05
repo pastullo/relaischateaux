@@ -1,0 +1,6 @@
+<li <%= active_class('properties') %>><%= link_to I18n.t('properties'), properties_path(:trailing_slash => true) %></li>
+<li <%= active_class('destinations') %>><%= link_to I18n.t('destinations'), destinations_path(:trailing_slash => true) %></li>
+<li <%= active_class('routes') %>><%= link_to I18n.t('tours'), routes_path(:trailing_slash => true) %></li>
+<li <%= active_class('experiences') %>><%= link_to I18n.t('experiencess'), experiences_path(:trailing_slash => true) %></li>
+<li class="visible-lg <%= "active" if controller_name == 'static_pages' and action_name == 'how_to' %>"><%= link_to I18n.t('about'), about_page_path(:trailing_slash => true) %></li>
+<li class="visible-md visible-lg"><a href="http://blog.relaischateauxafrica.com" target="_blank"><%= t 'blog' %></a></li>

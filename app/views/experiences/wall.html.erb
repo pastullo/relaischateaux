@@ -1,0 +1,98 @@
+
+<div class="hero hero-wall hero-xs">
+
+	<video class="fullscreen-background" preload="metadata" loop muted>
+		<source src="<%= asset_path('videos/video.mp4') %>" type="video/mp4">
+		<source src="<%= asset_path('videos/video.ogg') %>" type="video/ogg">
+	</video> 
+
+
+
+	<div class="content with-overlay">
+		<div class="table">
+			<div class="table-cell">
+
+				<p class="little"><%= t 'title' %></p>
+				<h1><%= t 'hero.lead' %></h1>
+			
+				<div class="sep hidden-xs"></div>
+
+				<p class="desc hidden-xs"><%= t 'wall_paragraph' %></p>
+
+				<a href="#" class="video-control">
+					<i class="fa fa-play"></i>
+				</a>
+
+
+				<a href="#more" class="arrow-down scroll-to bounce animated">
+					<!-- <span><%= t 'scroll_down' %></span> -->
+					<i class="fa fa-angle-down"></i>
+				</a>
+
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+</div>
+
+<script type="text/javascript">
+
+	$(function() {
+
+		if ('ontouchstart' in window) {
+			$('.experience .content').css('transition','').css('opacity',1);
+			$('.experience span').hide();
+		}
+	});
+</script>
+
+<div class="experiences-listing" id="more">
+
+<!-- 	<div class="header">	
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-8 col-md-6">
+					<h1 style="font-weight: bold; margin-bottom: 20px;"><%= raw t 'experiences.title' %></h1>
+					<p style="font-size: 20px;"><%= t 'experiences.lead' %></p>
+					<div class="sep hidden-xs"></div>
+				</div>
+			</div>
+		</div>	
+	</div> -->
+
+
+
+	<div class="experiences container" id="wallofexperiences">
+		<% @experiences.each do |e| %>
+			<%= render partial: 'experiences/experience_sm', locals: {experience: e} %>
+		<% end %>
+	</div>
+
+	<div class="clearfix"></div>
+	
+</div>
+
+<script type="text/javascript">
+	var $container = $('#wallofexperiences');
+		// init
+		$container.packery({
+		  itemSelector: '.experience',
+		  gutter: 0
+		});
+</script>
+
+<%
+    meta_tags({
+      title: I18n.t('seo.title.wall'),
+      description: I18n.t('seo.description.wall'),
+      image: asset_path('backgrounds/wall.jpg'), 
+      url: root_url
+    })
+ %>
+
+<%= render 'layouts/addthis' %>
+

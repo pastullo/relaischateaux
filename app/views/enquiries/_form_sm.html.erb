@@ -1,0 +1,75 @@
+<div class="enquire-steps">
+	<div class="step">
+		<span class="step">1. <%= I18n.t('step_1').upcase %></span>
+	</div>
+	<div class="step">
+		<span class="step grey">2. <%= I18n.t('step_2').upcase %></span>		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+	<%= form_for( @enquire, url: submit_enquiries_path(), method: :post, remote: true, class: 'enquire enquire-sm') do |f| %>
+	  <div class="form-group <%= 'has-error' if @enquire.errors[:full_name].present? %>">
+	  	<label class="spaced"><%= t 'form.full_name' %></label>
+	  	<%= f.text_field :full_name, class: 'form-control' %>
+
+	    <% if @enquire.errors[:full_name].present? %>
+	    	<p class="help-block"><%= @enquire.errors[:full_name].join(', ') %></p>
+	    <% end %>
+	  </div>
+	  <div class="form-group <%= 'has-error' if @enquire.errors[:email].present? %>">
+	  <label class="spaced"><%= t 'form.email' %></label>
+	    <%= f.email_field :email, class: 'form-control' %>
+	    <% if @enquire.errors[:email].present? %>
+	    	<p class="help-block"><%= @enquire.errors[:email].join(', ') %></p>
+	    <% end %>
+	  </div>
+	  
+	  <div class="form-group <%= 'has-error' if @enquire.errors[:phone].present? %>">
+		<div class="row">
+
+			<div class="col-md-5">
+			  	<label class="spaced"><%= t 'form.phone' %></label>
+			  	<select id="country" name="enquire[country]" class="form-control">
+			  		<option value="false"><%= t 'select_country' %></option>
+			  	</select>
+			</div>
+
+			<div class="col-xs-2 col-md-1 country-code"></div>
+			<%= hidden_field_tag :country_code %>
+
+			<div class="col-xs-10 col-md-6">
+			  	<label class="spaced">&nbsp;</label>
+			  	<%= f.text_field :phone, class: "form-control", placeholder: I18n.t('form.label_phone') %>
+				    <% if @enquire.errors[:phone].present? %>
+				    	<p class="help-block"><%= @enquire.errors[:phone].join(', ') %></p>
+				    <% end %>
+			</div>
+		</div>
+	  </div>
+
+	  <div class="form-group" style="display: none;">
+	  	<p style="margin: 1.6em 0em;"><a class="specify show-enquiry-form" href="#" data-toggle="modal" data-target="#enquireModal"><%= t 'form.specify' %> </a></p>
+	  </div>
+	  <div class="form-group">
+	  <br>
+	  <%= f.button I18n.t('form.connect'), class: 'btn btn-info btn-lg btn-wide btn-submit', data: { disable_with: I18n.t("form.connecting") } %>
+	  	
+	  </div>
+
+	<% end %>
+
+<script type="text/javascript">
+	$(function(){
+		$.each(countries,function(key,country){
+			$('#country').append("<option value="+key+">"+country[2]+"</option>");
+		});
+		
+		$('#country').change(function(e){
+			// show the country code
+			$('.country-code').html(countries[$(this).val()][1]);
+			// update the hidden_field for the country code
+			$('#country_code').val(countries[$(this).val()][1]);
+		});
+	});
+</script>

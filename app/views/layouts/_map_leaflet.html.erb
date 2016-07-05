@@ -1,0 +1,79 @@
+<div class="menu-content" data-content-name="map">
+	<div class="container-map"> 
+		<div id="map"></div>
+	</div>
+</div>
+
+
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.5/mapbox.js'></script>
+<script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-minimap/v1.0.0/Control.MiniMap.js'></script>
+
+
+<script>
+
+var map = null;
+var minimap;
+
+$(function(){
+
+	L.mapbox.accessToken = 'pk.eyJ1IjoicmVsYWlzYWZyaWNhIiwiYSI6InF4SXE5QTgifQ._MAfRUlBsU9Ptzfp6sFHNA';
+	
+	map = L.mapbox.map('map', 'relaisafrica.ocl0izfr', {attributionControl: false})
+	    .on('ready', function() {
+	    	console.log('map ready, adding minimap');
+	    	minimap = new L.Control.MiniMap(L.mapbox.tileLayer('relaisafrica.ocl0izfr')).addTo(map);
+	        
+	    });
+
+	
+	var myLayer = L.mapbox.featureLayer().addTo(map);
+	
+var geoJson = [
+	<% Property.all.each do |p| %>
+		<% if p.has_map? %>
+			{
+			    "type": "Feature",
+			    "geometry": {
+			        "type": "Point",
+			        "coordinates": [<%= p.lng %>, <%= p.lat %>]
+			    },
+			    "properties": {
+			        "title": "<%= p.name %>",
+					"description": '<%= image_tag( URI.join(request.url, p.hero.url(:medium)), class: "thumb" ) %><%= p.short_description %><%= link_to(I18n.t("cta.learn_more"),property_url(p),class: "more") %>',
+			        "icon": {
+			            "iconUrl": "<%= asset_path 'icons/marker.png' %>",
+			            "iconSize": [42, 54], 
+			            "iconAnchor": [21, 54], // point of the icon which will correspond to marker's location
+			            "popupAnchor": [0, -54], // point from which the popup should open relative to the iconAnchor
+			            "className": "dot"
+			        }
+			    }
+			},
+		<% end %>
+	<% end %>
+];
+
+
+
+	myLayer.on('layeradd', function(e) {
+	    var marker = e.layer,
+	        feature = marker.feature;
+
+	    marker.setIcon(L.icon(feature.properties.icon));
+	});
+
+
+	myLayer.setGeoJSON(geoJson);
+
+	// myLayer.on('mouseover', function(e) {
+	//     e.layer.openPopup();
+	// });
+	// myLayer.on('mouseout', function(e) {
+	//     e.layer.closePopup();
+	// });
+
+	map.scrollWheelZoom.disable();
+	map.setView(new L.LatLng(<%= destination.lat %>, <%= destination.lng %>), <%= destination.zoom %>);
+});
+
+</script>

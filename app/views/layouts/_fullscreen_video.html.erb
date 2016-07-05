@@ -1,0 +1,11 @@
+
+<% if resource.video_mp4.present? or resource.video_ogg.present? %>
+	<video class="fullscreen-background" preload="metadata" loop muted>
+	<% if resource.video_mp4.present? %>
+		<source src="<%= resource.video_mp4.url %>" type="video/mp4">
+	<% end %>
+	<% if resource.video_ogg.present? %>
+		<source src="<%= resource.video_ogg.url %>" type="video/ogg">
+	<% end %>
+	</video>
+<% end %>

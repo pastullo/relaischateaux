@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recap: MyText
+  destination_id: 1
+  route_id: 1
+  order: 1
+
+two:
+  recap: MyText
+  destination_id: 1
+  route_id: 1
+  order: 1

@@ -1,0 +1,162 @@
+// Place all the styles related to the Highlights controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$color-gold: #b7995d;
+$color-dark-blue: #535e64;
+
+
+.modal-highlight {
+	.modal-content {
+		border-radius: 3px;
+		border: none;
+		box-shadow: 0 1px 3px rgba(51,51,51,0.3);
+
+		.modal-header {
+			padding: 12px;
+			border: none;
+			button.close {
+				font-size: 26px;
+				margin-top: -8px;
+				opacity: 0.4;
+			}
+		}
+		.modal-body {
+			padding: 25px;
+			h1,h2,h3,h4,h5 {
+				margin-top: 0px;
+			}
+			.boxes-holder {
+				padding: 0px;
+			}
+		}
+		.modal-footer {
+			text-align: left;
+			border: none;
+			button.dismiss {
+				border: none;
+				background: none;
+				color: $color-gold;
+				text-transform: uppercase;
+				font-weight: 500;
+			}
+		}
+	}
+}
+
+
+.modal-sick {
+	// width: 90%;
+
+	.modal-content {
+		background-color: black;
+		color: white;
+		border-radius: 0px;
+		border: none;
+		box-shadow: 0 1px 0px rgba(51,51,51,0.3);
+			.modal-body {
+				padding: 0;
+	
+				h1,h2,h3,h4,h5 {
+					margin: 0px;
+					margin-top: 7px;
+					color: white;
+					text-transform: uppercase;
+				}
+				p.tiny {
+					text-transform: uppercase;
+					font-weight: 500;
+					margin-bottom: 1em;
+				}
+				.modal-right {
+					padding: 2em 1em 1em;
+					position: relative;
+					a.book-now {
+						position: absolute;
+						top: 0px;
+						right: 0px;
+						// width: 2.2em;
+						height: 35px;
+						line-height: 35px;
+						color: $color-gold;
+						opacity: 0.9;
+						background-color: white;
+						padding: 0 1em;
+						font-weight: 500;
+						// font-size: 2.2em;
+						&:hover {
+							opacity: 0.8;
+						}
+					}
+				}
+				.modal-left {
+					position: relative;
+					min-height: 30px;
+					button.close {
+						position: absolute;
+						top: 0px;
+						right: 0px;
+						width: 1.2em;
+						height: 1.2em;
+						color: $color-gold;
+						opacity: 0.9;
+						background-color: white;
+						font-size: 2.2em;
+						&:hover {
+							opacity: 0.8;
+						}
+					}
+					video,iframe {
+						width: 100%; 
+						display: block;
+					}
+				}
+				div.sep {
+					width: 90%;
+					height: 1px;
+					background-color: $color-gold;
+					margin: 1em 0;
+					opacity: 0.4;
+				}
+				a.view {
+					text-transform: uppercase;
+					font-weight: 500;
+					margin-top: 10px;
+				}
+				a.enquire-now {
+					text-transform: uppercase;
+					font-weight: 500;
+					color: $color-gold;
+					outline: none;
+					display: block;
+					margin-top: 1em;
+				}
+				a.back {
+					color: $color-dark-blue;
+					text-transform: uppercase;
+					text-decoration: none !important;
+					font-weight: 500;
+					&:hover {
+						opacity: 0.8;
+					}
+				}
+		}
+
+	}
+}
+
+@media (min-width: 769px) {
+  .modal-sick {
+    width: calc(100% - 60px) !important;
+  }
+}
+
+.modal-card {
+	a.back {
+		font-weight: 500;
+		text-transform: uppercase;
+		// color: $color-dark-blue;
+	}
+}
+

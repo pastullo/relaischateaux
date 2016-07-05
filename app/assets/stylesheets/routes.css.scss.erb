@@ -1,0 +1,481 @@
+// Place all the styles related to the Routes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$color-gold: #B7995D;
+$color-dark-blue: #333D47;
+$color-dark-grey: #5D676F;
+
+.properties-container {
+	div.overlay {
+		display: none;
+	}
+	div.property {
+		// float: left;
+		.info-box {
+		vertical-align: bottom;	
+			.property-box {
+				margin-bottom: 30px;
+				background-color: rgba(255,255,255,0.9);
+				padding: 15px;
+				h1,h2,h3,h4 {
+					margin: 0;
+					color: $color-gold;
+					text-transform: uppercase;
+				}
+				p.desc {
+					line-height: 1.3em;
+					font-size: 1em;
+					height: 3.9em;
+					overflow: hidden;
+				}
+				a {
+					color: $color-dark-grey;
+					font-weight: bold;
+				}
+				div.desc_long {
+					display: none;
+				}
+			}
+		}
+	}
+}
+
+@media (max-height: 500px) {
+	.properties-container {
+		div.property {
+			.info-box {
+				.property-box {
+					p.desc {
+						display: none !important;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+.hero {
+	.route-container {
+		display: table;
+		height: 100%;
+		width: 100%;
+		.info-box {
+			.box-main {
+				padding: 2em;
+				margin-bottom: 10px;
+				background-color: rgba(255,255,255,0.95);
+				background-repeat: repeat;
+				img.emblem {
+					max-width: 35px;
+				}
+				&.bottom {
+					padding: 10px;
+				}
+
+				text-align: center;
+				p.little {
+					color: $color-gold;
+					font-size: 13px;
+					font-weight: bold;
+					margin-bottom: 20px;
+					.fa {
+						font-size: 110%;
+					}
+				}
+				div.tooltip-inner {
+					font-weight: normal;
+					max-width: 350px;
+				}
+				h1,h2,h3 {
+					// color: $color-dark-grey;
+					// margin-bottom: 20px;
+					margin: 10px 0;
+					text-transform: uppercase;
+				}
+				h1 {
+					font-size: 34px;
+					font-weight: bold;
+				}
+				div.desc {
+					font-family: "Goudy Old Style", "Times New Roman", serif;
+					color: $color-dark-grey;
+					font-size: 18px;
+					margin-bottom: 20px;
+				}
+				p.explanation {
+					font-family: "Proxima Nova", Helvetica, sans-serif;
+					font-size: 14px;
+					color: $color-dark-grey;
+				}
+				a {
+					text-decoration: none !important;
+					&:hover {
+						color: $color-gold !important;
+					}
+				}
+				a.more {
+					color: $color-dark-grey;
+					font-weight: bold;
+					font-size: 15px;
+					opacity: 0.8;
+				}
+				.dotted-box {
+					padding: 15px;
+					// padding-top: 0px;
+					background-color: white;
+					border: 1px dashed #AAA;
+					div {
+						// margin-top: 15px;
+						// margin-bottom: 3px;
+					}
+					p {
+						line-height: 1em;
+						margin: 0;
+						font-family: "Goudy Old Style", "Times New Roman", serif;
+					}
+					p.value {
+						font-size: 3em;
+						color: $color-dark-grey;
+						font-weight: bold;
+					}
+					p.label {
+						font-size: 14px;
+						color: $color-gold;
+						text-transform: uppercase;
+					}
+					a {
+						color: $color-dark-grey;
+						font-weight: bold;
+						font-weight: 15px;
+					}
+					.right-border {
+						border-right: 1px solid #EEE;
+					}
+				}
+			}
+		}
+	}
+	&.hero-routes {
+		height: 500px;
+	}
+}
+
+.hero-fixed {
+	
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	background-color: #222;
+	overflow: hidden;
+	min-height: 400px;
+	background-size: cover;
+	// background-attachment: fixed;
+	background-position: center center;
+
+	.info-box {
+		.stage-box {
+			background-color: #232323;
+			color: white;
+			padding: 2em;
+			h1,h2,h3,h4 {
+				margin-top: 0;
+				color: white;
+				font-size: 36px;
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+			p.recap {
+				font-family: "Goudy Old Style", "Times New Roman", serif;
+				text-transform: uppercase;
+				span.big {
+					font-size: 1.3em;
+					font-weight: bold;
+					sup {
+						font-size: 50%;
+					}
+				}
+				span.sep {
+					color: #CCC;
+					padding: 0 0.5em;
+				}
+			}
+			p.location {
+				font-weight: bold;
+				font-size: 0.8em;
+				text-transform: uppercase;
+				margin-bottom: 2em;
+			}
+			div.sep {
+				height: 1px;
+				width: 30%;
+				margin: 2em 0;
+				background-color: $color-gold;
+			}
+			a.more {
+				text-transform: uppercase;
+				color: #5c666f;
+				font-weight: bold;
+				display: block;
+				text-decoration: none !important;
+				&:hover {
+					color: white;
+				}
+			}
+			.steps {
+
+				div.step {
+					$steps-square-size: 2.2em;
+					width: $steps-square-size;
+					height: $steps-square-size;
+					line-height: $steps-square-size;
+					font-family: "Goudy Old Style", "Times New Roman", serif;
+					font-size: 1.2em;
+					text-align: center;
+					position: relative;
+					margin-top: 15px;
+					display: inline-block;
+					margin-right: 10px;
+
+					a {
+						color: $color-gold;
+						&.next { color: #E9E0CE; }
+					}
+
+					.border {
+						position: absolute;
+						transform: rotate(45deg);
+						-ms-transform: rotate(45deg);
+						top: 0;
+						left: 0;
+						border: 1px solid $color-gold;
+						width: 100%;
+						height: 100%;
+
+					}
+				}
+			}
+		}
+	}
+}
+
+
+@media (max-width: 768px) {
+	.hero-fixed {
+		.info-box {
+			.stage-box {
+				h1,h2,h3,h4 {
+					font-size: 24px;
+				}
+			}
+		}
+	}
+}
+
+.properties-available {
+	width: 100%;
+	background-color: #232323;
+	padding: 2.5em 0em;
+	text-align: center;
+	position: relative;
+	&:after { 
+		top: 100%; 
+		left: 50%; 
+		border: solid transparent; 
+		content: " "; 
+		height: 0; width: 0; 
+		position: absolute; 
+		pointer-events: none; 
+		border-color: rgba(35,35,35, 0); 
+		border-top-color: #232323; 
+		border-width: 8px; 
+		margin-left: -8px; 
+		z-index: 1;
+	}
+	span {
+		border: 1px solid $color-gold;
+		padding: 1em 4em;
+		color: white;
+		font-weight: bold;
+		text-transform: uppercase;
+		display: inline-block;
+		position: relative;
+		&.no-border {
+			border-color: transparent !important;
+			padding-bottom: 0;
+			margin-bottom: -1em;
+			display: block;
+		}
+		img {
+			position: absolute;
+			max-height: 25px;
+			top: -17px;
+			left: calc(50% - 12px);
+		}
+
+	}
+	&.tiny {
+		span {
+			padding: 0 !important;
+			display: inline;
+			img {
+				display: none !important;
+			}
+		}
+	}
+}
+
+#more {
+	position: relative;
+}
+
+// SUGGESTED RTOUTES BOXES
+div.feature-boxes {
+	img.tiny {
+		max-width: 25px;
+		margin-bottom: 5px;
+		margin-top: -1em;
+	}
+	h2 {
+		text-transform: uppercase;
+		color: white;
+		font-family: "Proxima Nova", Helvetica, sans-serif;
+		font-size: 1.1em;
+		font-weight: bold;
+		margin: 0;
+		margin-bottom: 3em;
+	}
+	.box {
+		a {
+			text-decoration: none !important;
+		}
+		border-radius: 0px;
+		background-color: #FEFEFE;
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+		margin-bottom: 15px;
+		.image {
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-color: #CCC;
+			background-position: center center;
+			height: 250px;
+			margin: 0px;
+			position: relative;
+			p {
+				margin: 0;
+				position: absolute;
+				bottom: 5px;
+				color: white;
+				font-size: 14px;
+				span {
+					color: white;
+					font-weight: 500;
+				}
+				&.left {
+					left: 5px;
+				}
+				&.right {
+					right: 5px;
+				}
+				&.price {
+					color: white;
+					font-family: "Goudy Old Style", "Times New Roman", serif;
+					font-weight: bold;
+					font-size: 16px;
+					text-shadow: 0 0 2px rgba(0,0,0,0.8);
+				}
+			}
+		}
+		.info {
+			padding: 15px;
+			h3, h4 {
+				text-transform: uppercase;
+				color: $color-gold;
+				font-size: 20px;
+					&.truncate {
+					    line-height: 1.3em;
+					    height: 1.3em;
+					    overflow: hidden;
+					}
+
+			}
+			h4.room {
+				text-transform: uppercase;
+				font-size: 20px;
+			}
+
+			p.price {
+				color: #5D676F;
+				font-family: "Goudy Old Style", "Times New Roman", serif;
+				text-transform: uppercase;
+				font-weight: bold;
+				font-size: 15px;
+			}
+			a.more {
+				font-weight: bold;
+				color: #5D676F;
+				&:hover {
+					color: $color-gold;
+				}
+			}
+			p.desc {
+				line-height: 1.3em;
+				overflow: hidden;
+				height: 3.9em;
+				font-size: 1em;
+			}
+		}
+		a { 
+			color: $color-gold;
+			text-transform: uppercase;
+			font-size: 110%;
+			// font-weight: bold;
+		}
+	}
+}
+
+.route-sep {
+	background-color: #232323;
+	width: 100%;
+	padding: 0.6em 0;
+	&.double {
+		padding: 2em 0;
+		img {
+			max-width: 25px;
+		}
+	}
+	&:last-child {
+		display: none;
+	}
+	&.with-arrow {
+		position: relative;
+		&:after { 
+			top: 100%; 
+			left: 50%; 
+			border: solid transparent; 
+			content: " "; 
+			height: 0; 
+			width: 0; 
+			position: absolute; 
+			pointer-events: none; 
+			border-color: rgba(35, 35, 35, 0); 
+			border-top-color: #232323; 
+			border-width: 8px; 
+			margin-left: -8px;
+			z-index: 1;
+		}
+	}
+	p {
+		margin: 0 auto;
+		// line-height: 3em;
+		font-size: 1em;
+		color: white;
+		text-transform: uppercase;
+		text-align: center;
+	}
+}
+

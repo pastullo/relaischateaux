@@ -1,0 +1,13 @@
+<div class="col-sm-12">
+
+	<p class="lead text-success">
+		<strong><%= t 'thank_you_page.thank_you' %></strong>
+		<%= t 'thank_you_page.enquiry_sent' %>
+	</p>
+	<br>
+	<p><%= t 'thank_you_page.confirmation_sent' %></p>
+	<p><%= t 'thank_you_page.confirmation_sent_2' %></p>
+
+	<br><br>
+	<%= link_to I18n.t('new_enquiry').upcase, new_enquiry_path(), remote: true %>
+</div>

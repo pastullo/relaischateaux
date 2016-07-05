@@ -1,0 +1,355 @@
+// Place all the styles related to the Properties controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$color-gold: #b7995d;
+$color-dark-blue: #333D47;
+
+.property-info-bottom {
+	ul.menu {
+		padding: 0;
+		margin: 0;
+		background-color: white;
+		text-align: center;
+		list-style: none;
+
+		li {
+			display: inline-block;
+			padding: 0;
+			border: none;
+			// font-family: "Goudy Old Style", "Times New Roman", serif;
+			border: none;
+			font-size: 16px;
+			font-weight: 500;
+			text-transform: uppercase;
+			width: 200px;
+			&.active {
+				border-bottom: 3px solid $color-gold;
+				a {
+					color: $color-gold;
+				}
+			}
+			a {
+			padding: 1.3em 0em;
+			display: block;
+			color: #5D676F;
+			outline: none;
+			text-decoration: none !important;
+				&:active {
+					outline: none;
+				}
+			}
+		}
+	}
+}
+
+
+@media (max-width: 768px) {
+	.property-info-bottom {
+		ul.menu {
+			li {
+				width: 100% !important;
+				a {
+					padding: 0.8em 0;
+				}
+				&.active {
+					background-color: #CCC;
+					border: none;
+					a {
+						color: white;
+					}
+				}
+			}
+		}
+	}
+}
+.menu-content {
+	display: none;
+	&.grey {	
+		// background-color: #EFEFEF;
+		background-color: #333;
+		padding: 2em 0em;
+	}
+	.container-reviews {
+		padding: 20px;
+		background: white;
+		border-radius: 4px;
+		max-width: 960px;
+		h2,h3 {
+			color: $color-gold;
+			margin-bottom: 1em;
+		}
+		img.tripadvisor {
+			max-height: 30px;
+			margin-left: 7px;
+		}
+	}
+	.container-map {
+		height: 550px;
+		position: relative;
+		padding: 0 !important;
+		#map {
+			position:absolute;
+			top:0;
+			bottom:0;
+			width:100%;
+			background-color: grey;
+		}
+	}
+}
+
+
+@media (max-width: 768px) {
+	.menu-content {
+		.container-map {
+			height: 350px;
+		}
+	}
+}
+
+.marker-description {
+	img.thumb {
+		width: 100%;
+		// float: left;
+		// margin-right: 15px;
+		margin-top: 5px;
+		margin-bottom: 10px;
+	}
+	a.more {
+		font-weight: 500;
+		text-transform: uppercase;
+		color: $color-gold;
+		display: block;
+	}
+}
+
+.hero {
+	.table {
+		position: relative;
+		.galleries {
+			position: absolute;
+			top: 115px;
+			left: 10px;
+			text-align: left;
+			ul {
+				list-style: none;
+				li {
+					line-height: 50px;
+					font-size: 20px;
+					margin-bottom: 5px;
+					a {
+						color: white;
+						text-shadow: 0 0 2px rgba(51,51,51,0.6);
+						&:hover {
+							text-decoration: none;
+							opacity: 0.9;
+						}
+					}
+					img {
+						height: 50px;
+						border-radius: 50%;
+						border: 1px solid white;
+						box-shadow: 0 0 2px rgba(51,51,51,0.3);
+					}
+				}
+			}
+
+		}
+		.gallery-control {
+			position: absolute;
+			top: 45%;
+			text-shadow: 0 0 3px rgba(51,51,51,0.8);
+			font-size: 6em;
+			&.control-left {
+				left: 10px;
+			}
+			&.control-right {
+				right: 10px;
+			}
+			a {
+				color: white;
+				opacity: 0.8;
+				&:hover {
+					opacity: 0.95;
+				}
+			}
+		}
+	}
+}
+
+
+@media (max-width: 768px) {
+	.gallery-control {
+		top: 50% !important;
+		&.control-left {
+			left: 6px !important;
+		}
+		&.control-right {
+			right: 6px !important;
+		}
+	}
+}
+
+
+
+.room-category {
+	display: none;
+}
+.rooms-list {
+	background-color: #333;
+	padding: 30px 0px;
+}
+
+ul.nav-rooms {
+	background-color: #333;
+	padding: 30px 0px;
+	text-align: center;
+	margin-bottom: 0px;
+	li {
+		float: none;
+		display: inline-block;
+		text-transform: uppercase;
+
+		a {
+			padding: 0.6em 3em;
+			border-radius: 2px;
+			background-color: #777B7F;
+			color: white;
+			// min-width: 200px;
+			&:hover {
+				background-color: #BDBEBF;
+				text-decoration: none;
+			}
+		}
+		&.active {
+			a {
+				text-decoration: none;
+				background-color: #41484E;
+				outline: none;
+			}
+		}
+	}
+
+}
+
+.when-to-visit {
+	// padding: 20px;
+	// background: white;
+	max-width: none !important;
+
+	.months-list {	
+		margin-top: 20px;
+		text-align: center;
+		div.month {
+			text-align: center;
+			padding: 10px 10px;
+			margin-right: 2px;
+			display: inline-block;
+			width: 90px;
+			background-color: #7cb685;
+			margin-bottom: 2px;
+			&.green {
+				background-color: #7cb685;
+			}
+			&.light-green {
+				background-color: #bed8bf;
+			}
+			&.yellow {
+				background-color: #f2dda2;
+			}
+			&.red {
+				background-color: #ce7868;
+			}
+			p.month-name {
+				font-weight: 500;
+				font-size: 120%;
+				text-transform: uppercase;
+			}
+			img {
+				max-height: 37px;
+			}
+		}
+	}
+
+	.dl-horizontal {
+		dd {
+			margin-left: 200px;
+		}
+		dt {
+			width: 180px;
+		}
+	}
+
+	div.legend {
+		span.color {
+			border-left: 2em solid grey;
+			min-width: 100px;
+			line-height: 3em;
+			padding: 0.5em 2em 0.5em 0.5em;
+			&.green {
+				border-color: #7cb685;
+			}
+			&.light-green {
+				border-color: #bed8bf;
+			}
+			&.yellow {
+				border-color: #f2dda2;
+			}
+			&.red {
+				border-color: #ce7868;
+			}
+
+		}
+	}
+}
+
+@media (max-width: 768px) {
+	.when-to-visit{
+		div.legend {
+			span.color {
+				display: block;
+				float: left;
+				width: 25%;
+				text-align: center;
+				border: none;
+				min-width: initial;
+				padding: 0;
+				&.green {
+					background-color: #7cb685;
+				}
+				&.light-green {
+					background-color: #bed8bf;
+				}
+				&.yellow {
+					background-color: #f2dda2;
+				}
+				&.red {
+					background-color: #ce7868;
+				}
+			}
+		}
+	}
+}
+
+#roomModal {
+	p.price {
+		font-family: "Goudy Old Style", "Times New Roman", serif;
+		color: #aeb1b8;
+	}
+	p.price_conditions {
+		color: #AEB1B8;
+		font-style: italic;
+	}
+	.features-list {
+		.feature {
+			margin-top: 6px;
+			color: #aeb1b8;
+			font-size: 14px;
+		}
+		img {
+			max-width: 30px;
+			max-height: 30px;
+			margin-right: 5px;
+		}
+	}
+}

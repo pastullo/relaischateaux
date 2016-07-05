@@ -1,0 +1,60 @@
+<!-- Modal -->
+<div class="modal" id="galleryModal" tabindex="-1" role="dialog" aria-labelledby="galleryLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sick">
+    <div class="modal-content">
+
+      <div class="modal-body row">
+        <div class="col-sm-8">
+          <div class="modal-left">
+
+    
+  	
+      	<% if @gallery.pictures.any? %>
+      		
+	      	<div class="slick-gallery">
+  		      <% @gallery.pictures.each do |picture| %>
+  		      	<div><%= image_tag picture.image.url(:wide), class: 'img-responsive' %></div>
+  		      <% end %>
+			    </div>
+
+	      	<div class="slick-gallery-nav">
+		        <% @gallery.pictures.each do |picture| %>
+		        	<div><%= image_tag picture.image.url(:thumb_medium), class: 'img-responsive', alt: '' %></div>
+		        <% end %>
+			    </div>
+
+        	<% else %>
+        		<p class="text-muted">Sorry, there are no pictures available for this gallery</p>
+        	<% end %>
+        <!-- </div> -->
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+        </div>          
+      </div>
+
+      <div class="col-sm-4">
+        <div class="modal-right">
+
+            <a href="#" class="book-now"><%= t 'navbar.connect' %></a>
+
+            <h2><%= @gallery.gallerizable.name %></h2>
+            
+            <p><%= @gallery.gallerizable.about_body.html_safe %></p>
+
+            <br>
+              <% if @gallery.gallerizable.galleries.count > 1 %>
+                <p class="tiny"><%= t 'galleries' %>:</p>
+                <% @gallery.gallerizable.galleries.each do |g| %>
+                  <%= link_to g.name, gallery_path(g), remote: true, class: "gallery #{(g.id==@gallery.id ? 'active' : '')}" %>
+                <% end %>
+              <% end %>
+
+            <div class="sep"></div>
+
+            <a href="#" class="back" data-dismiss="modal"><%= t 'close' %></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

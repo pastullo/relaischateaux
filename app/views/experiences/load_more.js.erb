@@ -1,0 +1,8 @@
+// alert('loading more starting from <%= @offset %>. End: <%= @end.inspect %>');
+<% if @end %>
+	$('.load-more-experiences').remove();
+<% end %>
+
+<% @experiences.each do |e| %>
+$('.experiences').append($('<%=j render partial: "experiences/experience_sm", locals: {experience: e} %>').fadeIn());
+<% end %>

@@ -1,0 +1,84 @@
+<div class="enquire-steps">
+	<div class="step">
+		<span class="step grey">1. <%= I18n.t('step_1').upcase %></span>
+	</div>
+	<div class="step">
+		<span class="step">2. <%= I18n.t('step_2').upcase %></span>		
+	</div>
+	<div class="clearfix"></div>
+</div>
+
+
+	<%= form_for( @enquire, url: enquiries_path(), method: :post, remote: true,html: { class: 'enquire-lg' } ) do |f| %>  
+
+
+
+		<%= f.hidden_field :full_name %>
+		<%= f.hidden_field :email %>
+		<%= f.hidden_field :phone %>
+		<%= hidden_field_tag :country_code, params[:country_code] %>
+
+	
+		<div class="form-group">
+		  	<label class="control-label"><%= t 'form.label_arrival' %></label>
+	  		<select class="form-control" name="date[month]" id="date_month">
+	  			<option value="n/a"><%= I18n.t('form.form_lg.prompt_month') %></option>
+	  			<% 1.upto(20).each do |i| %>
+	  				<option value="<%= (Time.zone.now + i.month).strftime('%B %Y') %>"><%= (Time.zone.now + i.month).strftime('%B %Y') %></option>
+	  			<% end  %>
+	  		</select>
+    	</div>
+
+
+		<div class="form-group">
+	  		<label class="control-label"><%= t 'form.label_stay' %></label>
+	  		<%= f.number_field :stay_duration, class: 'form-control', placeholder: I18n.t('form.form_lg.label_duration') %>
+    	</div>
+
+	  <div class="form-group">
+	  	<div class="row">
+		  <div class="col-sm-6">
+		  	
+		  	<label class="control-label"><%= t 'form.form_lg.label_adults' %></label>
+	  		<%= f.select :adults, (0..15), { include_blank: I18n.t('form.form_lg.adults') }, class: 'form-control' %>
+			
+		  </div>
+
+		  <div class="col-sm-6">
+			  	<label class="control-label"><%= t 'form.form_lg.label_children' %></label>
+		  		<%= f.select :children, (0..10), { include_blank: I18n.t('form.form_lg.children') }, class: 'form-control' %>
+			</div>
+			</div>
+		</div>
+
+
+
+	  <div class="form-group form-group-children">
+
+		  <div class="form-info-box">
+		  	<p><%= t 'form.form_lg.please_note' %></p>
+		  	<div class="children-select-list"></div>
+		  </div>
+
+	  </div>
+
+
+		<div class="form-group">
+	  		<label class="control-label"><%= t 'form.describe' %></label>
+	  		<%= f.text_area :comments, rows: 3, class: 'form-control', placeholder: I18n.t('form.describe_placeholder'), style: "height: auto !important;" %>
+
+		</div>
+
+		<div class="form-group">
+			<%= f.check_box :newsletter, {checked: true} %>
+			<label class="control-label"><%= t 'form.form_lg.newsletter' %></label>
+		</div>
+
+		<div class="form-group">
+			<%= f.button I18n.t('form.submit_2'), class: 'btn btn-info btn-lg btn-wide btn-submit btn-submit-2', data: { disable_with: I18n.t("form.connecting") } %>
+		</div>
+
+
+
+
+	<% end %>

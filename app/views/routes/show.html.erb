@@ -1,0 +1,144 @@
+
+
+<% content_for :route_stages do %>
+	<div id="more">
+		<% @route.stages.includes(:destination).each do |stage| %>
+			<% if stage.destination.present? %>
+				<% property_total = stage.destination.properties.count %>
+				<%= render partial: 'stage_block', locals: {
+						route: @route, 
+						stage: stage, 
+						property_total: property_total, 
+						count: @stage_count,
+						counter: @counter
+					}
+				%>
+				<% 
+					@counter += 1 
+					@property_total += property_total
+					@days_total += stage.days.to_i
+				%>
+			<% end %>
+		<% end  %>
+	</div>
+<% end %>
+
+<div class="hero hero-empty">
+
+</div>
+
+<div class="hero hero-route hero-position-fixed autoheight-xs" style="background-image: url(<%= @route.hero.url(:full) %>);">
+	<div class="route-container">
+			<div class="info-box row">
+				<div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+					<div class="box-main">
+
+						<h1><%= @route.name %></h1>
+						<p><%= image_tag 'logo/emblem.png', class: 'emblem hidden-xs' %></p>
+
+						<div class="desc"><%= @route.short_description.html_safe %></div>
+						<div class="desc hidden-xs"><%= t 'tooltips.paragraph' %></div>
+
+						<a href="#more" class="more scroll-to">
+							<%= t 'begin_journey' %>
+							<i class="fa fa-angle-down"></i>
+						</a>
+					</div>
+<% 
+=begin %>
+					<div class="box-main bottom hidden-xs">
+						<div class="dotted-box">
+							
+							<div class="row">
+								<div class="col-xs-6 col-sm-4 right-border">
+									<p class="value"><%= @days_total %></p>
+									<p class="label"><%= t 'nights' %></p>
+								</div>
+								<div class="hidden-xs col-sm-4 right-border">
+									<p class="value"><%= @stage_count %></p>
+									<p class="label"><%= t 'destinations' %></p>
+								</div>
+
+								<div class="col-xs-6 col-sm-4">
+									<br>
+									<a href="#more" class="scroll-to"><%= t 'begin_journey' %><br>
+									<i class="fa fa-angle-down"></i></a>
+								</div>
+							</div>
+						</div>
+					</div>
+<%
+=end %>
+				</div>
+			</div>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	$(function () {
+		// start tooltips
+		$('[data-toggle="tooltip"]').tooltip()
+	})
+</script>
+
+<%= yield :route_stages %>
+
+
+<div class="pos-relative">
+
+	<div class="feature-boxes boxes-holder">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<%= image_tag 'logo/tiny.png', class: 'tiny' %>
+					<h2><%= t 'other_routes' %></h2>
+				</div>
+			</div>
+			<div class="row recommended-routes-carousel">
+				<% ids = Route.where('id != ?', @route.id).ids.sample(3) %>
+				<%= render partial: 'routes/recommended_routes', locals: {collection: Route.find(ids), size: 3} %>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+
+
+
+
+
+<!-- MAP MODAL -->
+<div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sick">
+    <div class="modal-content">
+      
+      <div class="modal-body row">
+        <div class="col-sm-8">
+          <div class="modal-left">
+            <% if @route.hero.present? %>
+              <%= image_tag @route.hero.url(:full), class: 'img-responsive' %>
+            <% end %>   
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> 
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="modal-right">
+            
+            <h2><%= @route.name %></h2>
+            <p class="tiny">route</p>
+            <%= @route.short_description.html_safe %>
+            
+            <div class="sep"></div>
+
+            <a href="#" class="back" data-dismiss="modal"><%= t 'close' %></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

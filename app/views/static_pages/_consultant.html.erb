@@ -1,0 +1,15 @@
+<div class="col-sm-4 slide">
+	<div class="consultant">
+		<div class="icon"><%= image_tag 'logo/tiny.png' %></div>
+		<div class="thumb" style="background-image: url(<%= c.image.url(:wide) %>)"></div>
+		<div class="info">
+			<p class="name"><%= c.name %></p>
+			<p class="position"><%= c.job %></p>
+			<!-- <div class="hidden-xs">								 -->
+				<p class="quote"><i class="fa fa-quote-left"></i></p>
+				<p class="quote-text"><%= c.review %> - <b><%= c.review_by %></b></p>
+				<p class="quote text-right"><i class="fa fa-quote-right"></i></p>
+			<!-- </div> -->
+		</div>
+	</div>
+</div>

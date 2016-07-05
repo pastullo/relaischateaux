@@ -1,0 +1,7 @@
+
+$('#aboutPropertyModal').remove();
+$('body').append("<%=j render 'properties/about_modal' %>");
+
+$('#aboutPropertyModal').modal('show');
+
+addEventToBookNowBtn();

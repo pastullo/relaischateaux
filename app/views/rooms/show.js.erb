@@ -1,0 +1,16 @@
+
+$('#roomModal').remove();
+$('body').append("<%=j render 'rooms/room_modal', locals: {room: @room} %>");
+
+$('#roomModal').modal('show');
+
+
+$('#roomModal .slick-gallery').slick({
+    arrows: true,
+	autoplay: false,
+	autoplaySpeed: 2500,
+	accessibility: true
+});
+
+
+addEventToBookNowBtn();

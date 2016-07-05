@@ -1,0 +1,95 @@
+
+<%
+	width = number_with_precision(
+		(stage_counter > 0 ? (100.to_f/(stage_counter)) : 100 ), precision: 2)
+%>
+<% content_for :properties_set do %>
+
+	<div class="hero expandable" style="background-image: url(<%= ( stage.property_hero.present? ? stage.property_hero.url(:full) : stage.property.hero.url(:full) ) %> ); left: <%= width.to_f * counter %>%; width: <%= width %>%">
+		<div class="hero-bg">
+			<div class="info-box row">
+				<div class="<%= (stage_counter >= 3 ? 'col-xs-12' : (stage_counter == 1 ? 'col-sm-4 col-sm-offset-1' : 'col-sm-8 col-sm-offset-2') ) %>">
+					<div class="property-box">
+
+						<h3><%= stage.property_name %></h3>
+						<p class="info"><%= stage.destination_name %></p>
+						<p class="desc"><%= stage.property_short_description.to_s.html_safe %></p>
+						
+						<%= link_to I18n.t('cta.discover_more').upcase, learn_more_experience_path(stage_id: stage.id, type: 'property'), remote: true, class: 'more' %>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<% end %>
+
+
+<% content_for :properties_set_mobile do %>
+
+	<div class="hero property" style="background-image: url(<%= ( stage.property_hero.present? ? stage.property_hero.url(:full) : stage.property.hero.url(:full) ) %> );">
+		<div class="hero-bg">
+			<div class="info-box row">
+				<div class="col-xs-12">
+					<div class="property-box">
+						<h3><%= stage.property_name %></h3>
+						<p class="desc"><%= stage.property_short_description.to_s.html_safe %></p>
+						
+						<%= link_to I18n.t('cta.discover_more').upcase, learn_more_experience_path(stage_id: stage.id, type: 'property'), remote: true, class: 'more' %>
+						<%# link_to I18n.t('cta.discover_more').upcase, show_about_property_path(stage.property.id),remote: true, class: 'more' %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<% end %>
+
+
+<% content_for :destinations_set do %>
+
+	<div class="hero expandable" style="background-image: url(<%= (stage.destination_hero.present? ? stage.destination_hero.url(:full) : stage.destination.hero.url(:full) ) %> );left: <%= width.to_f * counter %>%; width: <%= width %>%">
+		<div class="hero-bg">
+			<div class="info-box row">
+				<div class="<%= (stage_counter >= 3 ? 'col-xs-12' : (stage_counter == 1 ? 'col-sm-4 col-sm-offset-1' : 'col-sm-8 col-sm-offset-2') ) %>">
+					<div class="property-box">
+
+						<h3><%= stage.destination_name %></h3>
+						<p class="info"><%= stage.destination.location %></p>
+						
+						<p class="desc"><%= stage.destination_short_description.to_s.html_safe %></p>
+
+						<%= link_to I18n.t('cta.discover_more').upcase, learn_more_experience_path(stage_id: stage.id, type: 'destination'), remote: true, class: 'more' %>
+
+						<%# link_to I18n.t('cta.discover_more').upcase, show_about_destination_path(stage.destination.id),remote: true, class: 'more' %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<% end %>
+
+<% content_for :destinations_set_mobile do %>
+
+	<div class="hero property" style="background-image: url(<%= (stage.destination_hero.present? ? stage.destination_hero.url(:full) : stage.destination.hero.url(:full) ) %> );">
+		<div class="hero-bg">
+			<div class="info-box row">
+				<div class="col-sm-12">
+					<div class="property-box">
+
+						<h3><%= stage.destination_name %></h3>
+						<p class="desc"><%= stage.destination_short_description.to_s.html_safe %></p>
+
+						<%= link_to I18n.t('cta.discover_more').upcase, learn_more_experience_path(stage_id: stage.id, type: 'destination'), remote: true, class: 'more' %>
+
+						<%# link_to I18n.t('cta.discover_more').upcase, show_about_destination_path(stage.destination.id),remote: true, class: 'more' %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+<% end %>
+

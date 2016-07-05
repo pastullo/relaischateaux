@@ -1,0 +1,264 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+fr:
+  title: "Relais & Châteaux"
+  active_admin:                                                                  
+    powered_by: ""
+  experiencess: "expériences"
+  hotels: "Hôtels & Lodges"
+  properties: "établissements"
+  property: "établissement"
+  tours: "Itinéraires"
+  our_property: "notre établissement situé"
+  our_properties: "nos établissements situés"
+  destinations: "destinations"
+  routes: "routes"
+  routes_de: "Routes du Bonheur"
+  about: "À Propos"
+  highlights: "Attractions"
+  meta:
+    title: "Relais & Châteaux"
+    title_cap: "RELAIS & CHATEAUX"
+    description: "Réalisez votre rêve d'Afrique"
+  hero:
+    title: "Relais & Châteaux"
+    lead: "Commencez à Planifier votre Séjour en Afrique"
+    experience_africa: "Découvrez l'Afrique"
+    learn_more: "Lire la suite"
+  footer:
+    fullfil: "Laissez-nous satisfaire vos envies d'Afrique"
+    start: "Notre équipe d'experts est spécialisée dans la conception d'itinéraires personnalisés adaptés à vos envies. Chaque voyage est unique."
+    icon: "Icon Expeditions est le voyagiste officiel de Relais & Châteaux en Afrique subsaharienne."
+    tripadvisor: "Avis de voyageurs fournis par TripAdvisor."
+    copyright: "© 2015 Icon Expeditions"
+    email: "enquiries@iconexpeditions.com"
+    contact_us: "NOUS CONTACTER"
+    tel_label: "TELEPHONE"
+    email_label: "email"
+    request_label: "Demander à être contacté"
+    see_all: "Tout afficher"
+    connect_with: "Contactez un expert"
+  cta:
+    learn_more: "Lire la suite"
+    discover_more: "Lire la suite"
+    view_route: "Voir la Route"
+    cta: "Filtrer"
+    start_exploring: "Commencez à explorer"
+    explore: "Explorez"
+    view_property: "Voir l'établissement"
+    view_room: "Voir la chambre"
+  navbar:
+    connect: "Réserver"
+    choose_language: "Sélectionner une langue"
+  experiences:
+    title: "MUR DES <br>EXPÉRIENCES"
+    lead: "Chez Relais & Châteaux, nous pensons que les expériences composent les voyages. Notre équipe d’experts fera en sorte que votre voyage en Afrique soit unique."
+  filters:
+    by_experience: "PAR EXPÉRIENCE"
+    by_experiences: "PAR EXPÉRIENCES"
+    by_destination: "PAR DESTINATION"
+    by_destinations: "PAR DESTINATIONS"
+    clear_filter: "Supprimer les filtres"
+    available: "disponible"
+    no_destination: "Aucune destination ne correspond à votre recherche"
+    no_experience: "Aucune expérience ne correspond à votre recherche"
+    no_route: "Aucune route de correspond à votre recherche"
+    no_property: "Aucun établissement ne correspond à votre recherche"
+  listings:
+    destinations: "L'équipe d'Icon Expeditions organisera votre séjour dans les destinations ci-dessous ou concevra pour vous un itinéraire combinant plusieurs destinations selon vos besoins, vos envies et votre style."
+    experiences: "En visitant l’Afrique, vous immergerez vos sens et enrichirez votre âme. Sélectionnez une des expériences ci-dessous et commencez votre aventure en Afrique…"
+    routes: "Les Routes du Bonheur ci-dessous représentent des itinéraires populaires et recommandés qui combinent plusieurs établissements Relais & Châteaux en Afrique. Elles sont simplement des exemples de ce qui est réalisable. Notre équipe d’experts concevra une Route du Bonheur adaptée à vos demandes et à vos envies."
+    properties: "L'équipe d'Icon Expeditions réservera votre séjour dans un des établissements listés ci-dessous ou organisera un itinéraire adapté à vos besoins, vos envies et votre style."
+# 
+  route_de: "Route du Bonheur"
+  wall_paragraph: "Relais & Châteaux est une collection des plus beaux hôtels du monde. Il existe 18 établissements Relais & Châteaux en Afrique. La magie de l'Afrique se révèle pleinement lorsque vous combinez les destinations, les établissements et les expériences dans votre propre itinéraire personnalisé."
+  discover: "Découvrez"
+  begin_journey: "COMMENCEZ VOTRE AVENTURE"
+  nights: "nuits"
+  form:
+    full_name: "Nom et prénom"
+    email: "Email"
+    phone: "Téléphone"
+    label_name: "Ex: Jean Dupont"
+    label_email: "Ex: jean@email.com"
+    label_phone: "Ex: 082789221"
+    label_arrival: "À quelle période souhaitez-vous voyager?"
+    label_stay: "Combien de nuits?"
+    label_country: "Pays"
+    placeholder_country: "Ex: +27"
+    connect: "À SUIVRE: LES DÉTAILS DE VOTRE SÉJOUR"
+    connecting: "SOUMISSION EN COURS"
+    success: "Merci! Votre demande a été envoyée."
+    specify: "J'aimerais spécifier mes exigences de voyage"
+    form_lg_header: "Spécifiez les détails de votre séjour"
+    describe: "Est-ce que vous avez d'autres précisions?"
+    describe_placeholder: "Veuillez nous indiquer quelles destinations et expériences vous intéressent, sans oublier vos demandes spécifiques. "
+    submit_2: "Envoyer la demande"
+    form_lg:
+      title: "C'est presque fini..."
+      lead: "Veuillez compléter les détails de votre séjour afin que nous puissions commencer à organiser votre aventure en Afrique."
+      adults: "Sélectionnez"
+      children: "Sélectionnez"
+      label_duration: "Nuits"
+      newsletter: "Newsletter Signup"
+      label_adults: "Nombre d'adultes"
+      label_children: "Enfants de moins de 12 ans"
+      prompt_month: "Sélectionnez"
+      please_note: "Veuillez préciser l'âge des enfants de moins de 12 ans au moment du séjour car ceci peut avoir des conséquences sur les tarifs."
+  destination: "destination"
+  start_your_journey: "Commencez à plannifier votre aventure en Afrique"
+  close: "Fermer"
+  routes_featuring: "Itinéraires incluant"
+  other_routes: "Autres routes qui pourraient vous intéresser"
+  meet_innkeeper: "Rencontrez l'hôtelier"
+  rooms: "Chambres"
+  per_villa: "par villa"
+  per_person: "par personne"
+  per_room: "par chambre"
+  reviews: "Avis"
+  celebrate_experience: "Célébrez %{experience} dans ces Routes du Bonheur"
+  recommended_hotels: "Hôtels et lodges recommandés pour %{name}"
+  hotels_in: "Hôtels & Lodges situés dans cette région: %{name}"
+  recommended_destinations: "Destination recommandées pour %{name}"
+  our_properties_in: "%{our_properties} dans cette région: %{destination}"
+  features: "équipements"
+  more_info: "Apprenez-en d'avantage sur %{name}"
+  galleries: "galeries"
+  errors:
+    messages:
+      blank: "Ce champ est nécessaire"
+  learn_more_about: "En apprendre d'avantage sur %{name}"
+  tooltips:
+    route: "Les Routes du bonheur servent d'inspiration, elles constituent simplement des itinéraires suggérés."
+    paragraph: "Que vous souhaitiez ajouter, retirer une destination ou inclure un chauffeur, un chef, un guide ou même un jet privé, les experts d'Icon Expeditions personnaliseront tous les aspects de votre Route du Bonheur selon votre style, vos demandes et vos envies."
+  cards:
+    pricing: "Nos tarifs"
+    pricing_text: "Les tarifs varient selon les saisons et les diponibilités. Chaque devis est personnalisé pour correspondre à vos besoins."
+    routes: "Votre Route du Bonheur"
+    routes_text: "Les experts d'Icon Expeditions sont spécialisés dans la conception d'itinéraires personnalisés."
+  contacts:
+    phone: "+27 21 469 2652"
+  thank_you_page:
+    thank_you: "Merci!"
+    enquiry_sent: "Votre demande a été envoyée et votre aventure avec Icon Expeditions et Relais & Châteaux a débuté!"
+    confirmation_sent: "Une confirmation par e-mail de Icon Expeditions contenant votre numéro de référence a été envoyée vers la boîte de réception de votre adresse email."
+    confirmation_sent_2: "Au cas où nous ne vous aurions pas encore contacté dans les prochaines 24 heures (48 heures le week-end), il se pourrait que cet email ait été redirigé vers votre dossier d'emails indésirables. N’hésitez pas à nous contacter sur un de nos numéros gratuits."
+  email:
+    subject: "Merci de nous avoir contactés"
+    text: >
+      <p>Merci de nous avoir contactés sur le site www.relaischateauxafrica.com.</p>
+      <p>J’aimerais profiter de cette opportunité pour me présenter, je m’appelle David Ryan, Fondateur et Directeur général d’Icon Expeditions. Icon Expeditions est le voyagiste officiel de Relais & Châteaux en Afrique.</p>
+      <p>Votre demande a été assignée à un de nos experts qui vous contactera dans les prochaines 24 heures (48 heures le week-end) afin de commencer à organiser votre expérience Relais & Châteaux. Votre consultant sera disponible pour vous aider avec tous les aspects de votre voyage dès aujourd’hui et ce jusqu’à votre retour.</p>
+      <p>Lorsque vous vivez une expérience Relais & Châteaux, vous découvrez un ensemble de sensations. Chaque établissement vous donne l’opportunité de découvrir une gamme d’expériences sensorielles où la beauté d’un lieu, la chaleur de l’hospitalité et la qualité de la gastronomie sont en parfaite harmonie. Les goûts et les parfums, les paysages et les couleurs font de chaque séjour une expérience intense et colorée. Chaque séjour que nous concevons est unique.
+      La passion dont fait preuve notre équipe est notre atout principal. Nos employés sont formés et voyagent beaucoup, ils partagent leur passion du voyage avec vous à travers l’organisation, les réservations et les différentes étapes de votre séjour.</p>
+      <p>Je suis certains que vous êtes entre de bonnes mains, cependant, n’hésitez pas à me contacter sur david@iconexpeditions.com ou au +27 21 469 2600 si vous avez besoin d’aide.</p>
+      <p>Merci de nous avoir contactés. J’ai hâte de vous accueillir et de vous aider à réaliser votre rêve d'Afrique.</p>
+    signature: "David Ryan"
+  the_innkeeper: "L'hôtelier"
+  seo:
+    title:
+      wall: "Les Meilleurs Hôtels et Restaurants en Afrique | Relais & Châteaux"
+      properties: "Hôtels & Lodges en Afrique | Relais & Châteaux"
+      destinations: "Destinations de Vacances en Afrique | Relais & Châteaux"
+      experiences: "Expériences en Afrique | Relais & Châteaux"
+      routes: "Routes Suggérées en Afrique | Relais & Châteaux"
+    description:
+      wall: "Relais & Châteaux est une association de restaurants gourmets, hôtels boutiques, domaines et villas. Laissez-nous organiser votre expérience africaine."
+      properties: "Une association des meilleurs hôtels & lodges Relais & Chateaux en Afrique, qui comprend des établissements au Cap, au Parc Kruger et aux Chutes Victoria."
+      destinations: "Une association des meilleurs destinations à visiter en Afrique avec des établissements Relais & Chateaux, notamment en Afrique du Sud, au Botswana et en Zambie."
+      experiences: "Une association des expériences les plus diverses en Afrique. Laissez Relais & Chateaux plannifier votre prochaine aventure avec vos proches."
+      routes: "Explorez l'Afrique avec ces itinéraires suggérés qui relient les établissements Relais & Chateaux. Ces Routes du Bonheur peuvent être personnalisées selon vos besoins."
+  convert_prices: "CONVERTIR LES PRIX"
+  form_title:
+    properties:
+      show: "Nous contacter pour séjourner à %{name}"
+      index: "Réserver votre séjour dans un établissement Relais & Châteaux en Afrique"
+    destinations:
+      show: "Débuter votre aventure dans cette région: %{name}"
+      index: "Commencer à planifier votre voyage en Afrique"
+    routes:
+      show: "Commencer à planifier votre itinéraire personalisé"
+      index: "Commencer à planifier votre itinéraire personalisé"
+    experiences:
+      show: "Nous contacter à propos de cette expérience: %{name}"
+      index: "Commencer à planifier votre expérience unique en Afrique"
+  new_enquiry: "Nouvelle Demande"
+  let_us_contact_you: "Laissez-nous Vous Contacter"
+  select_country: "Choisir un Pays"
+  your_travel_details: "Les détails de Votre Séjour"
+  step_1: "Coordonnées"
+  step_2: "Détails du Séjour"
+  scroll_down: "Faire défiler"
+  accomodations: "hébergement"
+  sleeps: "pour"
+  reviews_list:
+    open: 'Ouvrir dans TripAdvisor'
+    review_by: 'De '
+  reviews_by_trip_advisor: "Avis de voyageurs fournis par "
+  popovers:
+    text_1: "Cliquez ici pour lire la vidéo!"
+    btn_1: "Prochain conseil"
+    heading_1: "Conseil"
+    text_2: "Cliquez ici pour contacter un consultant."
+    btn_2: "Ok, merci"
+    heading_2: "Conseil"
+  visitable:
+    title: "Quand visiter"
+    heading: "LA MEILLEURE PÉRIODE POUR VISITER"
+    intro: "Quelle est la meilleure période pour visiter"
+    general_overview: "APERÇU GÉNÉRAL"
+    quick_facts: "QUELQUES INFORMATIONS"
+    best_time: "La meilleure période:"
+    high_season: "Saison Haute"
+    low_seasons: "Saison Basse"
+    best_weather: "Meilleures Conditions"
+    worst_weather: "Moins Bonnes Conditions"
+    excellent: "Excellent"
+    good: "Bon"
+    fair: "Convenable"
+    poor: "Mauvais"
+    temperature: "Température Maximale Moyenne"
+    rain: "Précipitations Moyennes"
+  map: "CARTE"
+  howto:
+    relais: "À propos de Relais & Châteaux"
+    relais_text: "Relais & Châteaux est une association des plus beaux hôtels du monde. Il existe 18 établissements Relais & Châteaux en Afrique."
+    africa: "Voyager en Afrique"
+    africa_text: "Les voyages en Afrique sont souvent constitués de plusieurs destinations. Les distances à parcourir sont grandes et la logistique d'un safari peut s'avérer compliquée."
+    icon: "Icon Expeditions"
+    icon_text: "Relais & Châteaux s'est associé avec Icon Expeditions – une équipe d'experts du voyage en Afrique basée au Cap."
+    start: "Débutez votre Aventure"
+    start_text: "Servez-vous de ce site comme d'une source d'inspiration pour votre voyage en Afrique. Une fois que vous êtes inspiré, contactez-nous. L'équipe d'Icon Expeditions est constituée d'experts du voyage en Afrique avec une expérience du terrain, qui connaissent les établissements. Ensemble, nous organiserons le voyage de vos rêves en Afrique selon vos demandes, vos envies et votre style."
+    meet_title: "Rencontrez l’équipe d’Icon Expeditions"
+    meet_text: >
+      <p>Icon Expeditions est le partenaire officiel de Relais & Châteaux en Afrique. Avec des bureaux au Cap et à Londres et plus de 10 ans d’expérience, notre équipe de plus de 50 consultants experts en voyage connait parfaitement les destinations et les établissements, elle s’occupera de réserver votre séjour dans un des établissements ou organisera un itinéraire regroupant plusieurs destinations selon vos demandes, vos envies et votre style.</p>
+      <p>Nous vous fournirons un devis, des conseils et un itinéraire gratuitement, vous évitant ainsi les tracas de l’organisation et du processus de réservation. De plus, nos experts sont présents en Afrique et seront disponibles pour vous assister à tout moment pendant votre aventure.</p>
+  card_modals:
+    rate_title: "Nos Tarifs"
+    rate_text: >
+      <p>Le but de Relais & Châteaux est de vous proposer des expériences uniques. Les experts d'Icon Expeditions concevront un itinéraire adapté à votre style, vos envies et votre budget. C’est pour cette raison que vous ne verrez pas de tarifs affichés sur nos itinéraires recommandées. Les tarifs varient selon les disponibilités, les saisons et les fluctuations du taux des devises mais nous ferons tout notre possible pour vous proposer les meilleurs tarifs et conseils.</p>
+      <p>Nos experts vous fourniront un devis, des conseils et un itinéraire basés sur vos propres intérêts, tout cela gratuitement, et s'occuperont de toute la logistique, de l’organisation et des réservations. Nos experts sont basés en Afrique du Sud et seront présent en Afrique durant votre séjour, prêts à vous assister.</p>
+    routes_title: "Routes du Bonheur"
+    routes_text: >
+      <p>Le concept des Routes du Bonheur a été développé en parallèle avec Relais & Châteaux. Ces routes célèbrent l’art de l’hospitalité et la joie de vivre. Les toutes premières Routes du Bonheur reliaient les huit hôtels fondateurs en France et offraient un itinéraire unique loin des sentiers battus et des standards.</p>
+      <p>Les Routes du Bonheur de l’Afrique décrites sur le site représentent des exemples d’itinéraires sur mesure qui mette en valeur les meilleures expériences de voyage en Afrique. Toutefois, ces routes sont simplement des exemples de ce qui est réalisable. Notre équipe d’experts passionnés conçoit les itinéraires selon vos demandes et vos besoins.</p>
+      <p>Il s'agit de votre chance d’explorer l’Afrique, de découvrir ses merveilles et de concevoir votre propre itinéraire personnalisé.</p>

@@ -1,0 +1,17 @@
+<%
+	width = number_with_precision(
+		(bubbles_total > 0 ? (100.to_f/(bubbles_total)) : 100 ), precision: 2)
+	left = number_with_precision( (width.to_f * counter), precision: 2)
+ %>
+	<a href="#" data-toggle="modal" data-target="#bubbleModal<%= bubble.id %>">
+		<div class="bubble" style="width: <%= width %>%; left: <%= left %>%; background-image: url(<%= asset_path(bubble.icon.url(:full)) %>);">
+			<div class="content">
+				<div class="table">
+					<div class="table-cell">
+						<span><%= t 'cta.explore' %></span>
+						<p><%= bubble.title %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</a>

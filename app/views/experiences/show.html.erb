@@ -1,0 +1,126 @@
+<!-- First hero -->
+<div class="hero hero-xs" style="background-image: url(<%= @experience.hero.url(:full) %>);">
+
+	<%= render partial: 'layouts/fullscreen_video', locals: {resource: @experience} %>
+
+	<div class="content with-overlay">
+		<div class="table">
+			<div class="table-cell">
+				<h1><%= @experience.title %></h1>
+				<% if @experience.short_description.present? %>
+					<p class="desc"><%= @experience.short_description.html_safe %></p>
+				<% end %>
+
+
+				<% if @experience.video_mp4.present? or @experience.video_ogg.present? %>
+					<a href="#" class="video-control">
+						<i class="fa fa-play"></i>
+					</a>
+				<% end %>
+
+				<a href="#discover" class="arrow-down scroll-to bounce animated">
+					<span><%= t 'scroll_down' %></span>
+					<i class="fa fa-angle-down"></i>
+				</a>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<% if @bubbles_total > 0 %>
+	<!-- Second hero with bubbles -->
+	<div class="properties-available" id="discover">
+		<span class="no-border">
+			<%= t 'more_info', name: @experience.title %>
+			<%= image_tag 'logo/tiny.png' %>
+		</span>
+	</div>
+	<div class="hero hero-bubbles">
+
+		<% counter = 0 %>
+		<% @experience.bubbles.each do |bubble| %>
+			<%= render partial: 'bubbles/bubble_block', locals: {
+				bubble: bubble,
+				bubbles_total: @bubbles_total,
+				counter: counter
+			} %>
+			<% counter += 1 %>
+
+			<% content_for :bubble_modals_list do %>
+				<%= render partial: 'bubbles/bubble_modal', locals: {bubble: bubble} %>
+			<% end  %>
+		<% end %>
+
+	</div>
+<% end %>
+
+
+
+<% counter = 0 %>
+<% @experience.experience_stages.each do |stage| %>
+	<%= render partial: 'experiences/stage_content', 
+		locals: {stage: stage, stage_counter: @stage_counter, counter: counter} %>
+	<% counter += 1 %>
+<% end %>
+
+
+<div class="properties-available">
+	<span class="no-border">
+		<%= t 'recommended_destinations', name: @experience.title %>
+		<%= image_tag 'logo/tiny.png' %>
+	</span>
+</div>
+
+
+<div class="expandables-container hidden-xs hidden-sm">
+	<%= yield :destinations_set %>
+	<div class="clearfix"></div>
+</div>
+
+<div class="properties-container visible-xs-block visible-sm-block">
+	<%= yield :destinations_set_mobile %>
+	<div class="clearfix"></div>
+</div>
+
+
+
+<div class="properties-available">
+	<span class="no-border">
+		<%= t 'recommended_hotels', name: @experience.title %>
+		<%= image_tag 'logo/tiny.png' %>
+	</span>
+</div>
+
+
+<div class="expandables-container hidden-xs hidden-sm">
+	<%= yield :properties_set %>
+	<div class="clearfix"></div>
+</div>
+
+<div class="properties-container visible-xs-block visible-sm-block">
+	<%= yield :properties_set_mobile %>
+	<div class="clearfix"></div>
+</div>
+
+
+
+<div class="feature-boxes boxes-holder">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12 text-center">
+				<%= image_tag 'logo/tiny.png', class: 'tiny' %>
+				<h2><%= t 'celebrate_experience', experience: @experience.title %></h2>
+			</div>
+		</div>
+		<div class="row recommended-routes-carousel">
+			<%= render partial: 'routes/recommended_routes', locals: {collection: @experience.routes.limit(3), size: @experience.routes.limit(3).size} %>
+		</div>
+	</div>
+</div>
+
+<%= yield :bubble_modals_list %>
+
+<%= render 'layouts/addthis' %>

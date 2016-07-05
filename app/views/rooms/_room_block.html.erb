@@ -1,0 +1,24 @@
+<div class="col-sm-4">
+	<div class="box">
+		<%= link_to room_path(room), remote: true do %>
+		<div class="image" style="background-image: url(<%= room.thumbnail %>);">
+			<% if room.from_price.present? %>
+				<p class="left price">+/- <%= room_price(room) %> <%= price_type(room) %></p>
+			<% end %>
+		</div>
+		<% end %>
+		<div class="info room-info">
+			<%= link_to room_path(room), remote: true do %>
+			<h4 class="room"><%= room.name %></h4>
+			<% end %>
+			<div class="room-desc">
+				<%= room.description %>
+				<div class="fade-to-bottom"></div>
+			</div>
+
+			<div class="sep"></div>
+			
+			<%= link_to I18n.t('cta.learn_more').upcase, room_path(room), remote: true, class: 'more' %>
+		</div>
+	</div>
+</div>	

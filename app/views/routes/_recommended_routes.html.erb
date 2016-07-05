@@ -1,0 +1,10 @@
+<% collection.each do |r| %>
+	<%= render partial: 'routes/route_card', locals: {route: r} %>
+<% end %>
+
+<% if size == 2 %>
+	<%= render partial: 'routes/card_pricing' %>
+<% elsif size == 1 %>
+	<%= render partial: 'routes/card_pricing' %>
+	<%= render partial: 'routes/card_routes' %>
+<% end %>

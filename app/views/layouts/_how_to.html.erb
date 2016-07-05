@@ -1,0 +1,56 @@
+<div class="how-to">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4">
+
+				<div class="row">
+					<div class="col-xs-3 col-sm-12">
+						<p class="text-center"><%= image_tag 'how_to/relais.png', class: 'brand' %></p>
+					</div>
+					<div class="col-xs-9 col-sm-12">
+						<p class="title"><%= t 'howto.relais' %></p>
+						<div class="sep"></div>
+						<p><%= t 'howto.relais_text' %></p>						
+					</div>
+				</div>
+
+			</div>
+			<div class="col-sm-4">
+
+				<div class="row">
+					<div class="col-xs-3 col-sm-12">
+						<p class="text-center"><%= image_tag 'how_to/africa.png', class: 'brand' %></p>
+					</div>
+					<div class="col-xs-9 col-sm-12">
+						<p class="title"><%= t 'howto.africa' %></p>
+						<div class="sep"></div>
+						<p><%= t 'howto.africa_text' %></p>
+					</div>
+				</div>
+				
+
+			</div>
+			<div class="col-sm-4">
+				<div class="row">
+					<div class="col-xs-3 col-sm-12">
+						<p class="text-center"><%= image_tag 'how_to/icon.png', class: 'brand' %></p>
+					</div>
+					<div class="col-xs-9 col-sm-12">
+						<p class="title"><%= t 'howto.icon' %></p>
+						<div class="sep"></div>
+						<p><%= t 'howto.icon_text' %></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+
+			<hr class="">
+			
+			<div class="col-sm-12 text-center">
+				<a href="#" class="close-how-to"><%= t 'close' %></a> or <%= link_to I18n.t('cta.learn_more'), about_page_path(), class: 'btn btn-primary' %>
+			</div>
+		</div>
+	</div>
+	<a href="#" class="close close-how-to"><i class="fa fa-close"></i></a>
+</div>	

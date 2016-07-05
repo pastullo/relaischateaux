@@ -1,0 +1,25 @@
+
+<div class="experience width-<%= experience[:blocksize] %> <%= "height-half" if(experience[:half_height] and experience[:blocksize] == 1) %>" 
+style="<%= "background-color: #{experience[:color]};" if experience[:color].present? %> <%= "background-image: url(#{asset_path(experience[:hero])})".html_safe if experience[:hero].present? %>" >
+
+    <%= link_to experience_path(experience[:slug]) do %>
+
+        <% if experience[:video_tile_mp4].present? and experience[:video_tile_ogg].present? %>
+            <video class="fullscreen-background video-<%= experience[:id] %><%= '-2' if experience[:second] %>" muted loop preload="metadata">        
+                <source src="<%= experience[:video_tile_mp4] %>" type="video/mp4">
+                <source src="<%= experience[:video_tile_ogg] %>" type="video/ogg">
+            </video> 
+        <% end %>
+
+    	<div class="content play-on-hover" data-video-id="<%= experience[:id] %><%= '-2' if experience[:second] %>">
+            <div class="table">
+                <div class="table-cell">
+                	<h3><%= experience[:title] %></h3>
+                    <span class="explore"><%= t 'cta.explore' %></span>
+                    <%# "<span class=\"explore hidden-xs\">#{I18n.t('cta.explore')}</span>".html_safe if experience[:blocksize] > 1  %>
+                </div>
+            </div>
+    	</div>
+    <% end %>
+
+</div>
