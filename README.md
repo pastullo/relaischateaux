@@ -1,14 +1,8 @@
 # Relais & Chateaux Africa
 
 
-## Deploying new changes
-First of all, commit and push changed to the remote repository:
-'git@github.com:RhinoAfrica/relais-chateaux.git'
 
-    git commit -am 'commit message here'
-    git push origin master
-
-Once that is done, the project uses Capistrano to deploy fetching the new code from github.
+The project uses Capistrano to deploy fetching the new code from github.
 
 Run on your local machine the following command:
 
@@ -27,7 +21,7 @@ There are two main linux user to access the servers:
 The "deployer" has root access and can be used to make changes, install packages and everything else.
 The "deploy" user has no root access and no password and it's use to deploy (by capistrano) and also is the user that runs the rail process.
 
-The "deployer" linux user password is `rhinopass2014`
+
 
 ## CMS Admin interface
 The website admin interface is powered by ActiveAdmin and is accessible by visiting the `/admin` page.
